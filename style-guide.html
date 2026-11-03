@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System &amp; UI Guide — SIMAG-JKB</title>
+  <meta name="description" content="Panduan resmi sistem desain, tipografi, penggunaan button, formulir, dan komponen antarmuka SIMAG-JKB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Styling Khusus Halaman Style Guide */
+    .guide-layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-2xl); align-items: start; }
+    .guide-nav { position: sticky; top: calc(var(--navbar-h) + 24px); background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: var(--space-md); }
+    .guide-nav a { display: block; padding: 6px 12px; font-size: 13px; font-weight: 500; color: var(--text-muted); border-radius: var(--radius-sm); text-decoration: none; }
+    .guide-nav a:hover { color: var(--primary); background: var(--bg-muted); }
+    .guide-nav .nav-heading { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-subtle); padding: 10px 12px 4px; }
+    
+    .color-swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-md); }
+    .swatch-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: #fff; }
+    .swatch-color { height: 72px; width: 100%; border-bottom: 1px solid var(--border); display: flex; align-items: flex-end; padding: 8px; font-size: 11px; font-weight: 600; }
+    .swatch-meta { padding: 10px; font-size: 12px; }
+    .swatch-meta strong { display: block; font-size: 13px; color: var(--text); }
+    .swatch-meta code { font-size: 11px; color: var(--text-muted); background: var(--bg-canvas); padding: 1px 4px; border-radius: 3px; }
+
+    .code-box { background: #0F172A; color: #F1F5F9; border-radius: var(--radius); padding: 14px 16px; font-family: monospace; font-size: 13px; overflow-x: auto; margin-top: 10px; }
+    .code-box code { color: #38BDF8; }
+    .rule-box { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: 12px; }
+    .rule-card { padding: 12px 16px; border-radius: var(--radius); font-size: 13px; border: 1px solid; }
+    .rule-do { background: #F0FDF4; border-color: #86EFAC; color: #166534; }
+    .rule-dont { background: #FEF2F2; border-color: #FECACA; color: #991B1B; }
+    .rule-do strong, .rule-dont strong { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; font-size: 13px; }
+
+    @media (max-width: 860px) {
+      .guide-layout { grid-template-columns: 1fr; }
+      .guide-nav { display: none; }
+      .rule-box { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============== NAVBAR PUBLIK =============== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Design System &amp; UI Guide</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog Publik</a></li>
+        <li><a href="mahasiswa/katalog.html">Area Mahasiswa</a></li>
+        <li><a href="admin/dashboard.html">Area Admin</a></li>
+        <li><a href="style-guide.html" class="active">Style Guide</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-primary btn-sm">Buka Gerbang Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Header Banner -->
+  <section class="section-sm" style="background:var(--primary);color:#fff;border-bottom:1px solid var(--border)">
+    <div class="container">
+      <span class="badge badge-info mb-sm" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.25)">
+        Referensi Pengembang Web SIMAG-JKB
+      </span>
+      <h1 class="display" style="font-size:36px;line-height:44px">Panduan Desain &amp; Komponen UI</h1>
+      <p class="body-lg" style="color:#CBD5E1;max-width:680px;margin-top:8px">
+        Halaman ini dibuat sebagai pedoman integrasi bagi anggota tim pengembang untuk memastikan keseragaman palet warna (White &amp; Blue), hierarki tipografi, tombol, form input, dan komponen status.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="container section">
+    <div class="guide-layout">
+      <!-- SIDEBAR NAVIGASI PANDUAN -->
+      <nav class="guide-nav">
+        <div class="nav-heading">Daftar Isi Guide</div>
+        <a href="#prinsip">1. Prinsip Desain</a>
+        <a href="#warna">2. Palet Warna (Tokens)</a>
+        <a href="#tipografi">3. Tipografi &amp; Teks</a>
+        <a href="#tombol">4. Panduan Tombol (Button)</a>
+        <a href="#form">5. Formulir &amp; Input</a>
+        <a href="#badges">6. Badges &amp; Status</a>
+        <a href="#cards">7. Komponen Kartu (Cards)</a>
+        <a href="#alerts">8. Alerts &amp; Feedback</a>
+        <a href="#tabel">9. Tabel &amp; Data Display</a>
+        <a href="#sitemap">10. Peta File &amp; Mockup</a>
+      </nav>
+
+      <!-- KONTEN PANDUAN LENGKAP -->
+      <main class="flex flex-col gap-2xl">
+
+        <!-- ================= 1. PRINSIP DESAIN ================= -->
+        <section id="prinsip" class="card p-xl">
+          <span class="overline">Filosofi &amp; Standar</span>
+          <h2 class="h1 mt-xs mb-sm">1. Prinsip Desain "Academic Trust"</h2>
+          <p class="body text-muted mb-md">
+            Sistem Informasi Magang JKB (SIMAG-JKB) digunakan di lingkungan kampus perguruan tinggi. Tampilan harus memancarkan kredibilitas akademik, keterbacaan data yang tinggi, dan kejelasan alur.
+          </p>
+
+          <div class="grid grid-3 mb-md">
+            <div class="p-md" style="background:var(--bg-canvas);border-radius:var(--radius)">
+              <div class="label text-primary flex items-center gap-xs mb-xs">
+                <span class="material-symbols-outlined">clean_hands</span>No AI Slop
+              </div>
+              <p class="caption">Hindari gradien berlebihan, ornamen blur floating yang tidak fungsional, dan glassmorphism gelap. Setiap garis dan warna harus memiliki tujuan interaksi yang jelas.</p>
+            </div>
+            <div class="p-md" style="background:var(--bg-canvas);border-radius:var(--radius)">
+              <div class="label text-primary flex items-center gap-xs mb-xs">
+                <span class="material-symbols-outlined">grid_view</span>Grid 8-Pixel
+              </div>
+              <p class="caption">Semua margin, padding, tinggi elemen, dan jarak kolom mengikuti kelipatan 8px (4px, 8px, 16px, 24px, 32px, 48px) untuk konsistensi vertikal.</p>
+            </div>
+            <div class="p-md" style="background:var(--bg-canvas);border-radius:var(--radius)">
+              <div class="label text-primary flex items-center gap-xs mb-xs">
+                <span class="material-symbols-outlined">palette</span>White &amp; Blue Theme
+              </div>
+              <p class="caption">Warna utama didominasi putih bersih (card &amp; surface) dan biru akademik terpercaya (Trust Blue #1E3A8A) dengan kontras teks Slate gelap.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 2. WARNA ================= -->
+        <section id="warna" class="card p-xl">
+          <span class="overline">Token Sistem</span>
+          <h2 class="h1 mt-xs mb-sm">2. Palet Warna (Color Palette)</h2>
+          <p class="body text-muted mb-lg">
+            Selalu gunakan CSS Variable yang terdefinisi pada <code>assets/css/style.css</code>. Jangan pernah melakukan hardcode nilai HEX pada kode baru!
+          </p>
+
+          <div class="title mb-sm">Warna Brand Utama</div>
+          <div class="color-swatch-grid mb-lg">
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#1E3A8A;color:#fff">#1E3A8A</div>
+              <div class="swatch-meta"><strong>Primary (Trust Blue)</strong><code>var(--primary)</code><div class="caption mt-xs">Header, Tombol Utama</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#172E6E;color:#fff">#172E6E</div>
+              <div class="swatch-meta"><strong>Primary Hover</strong><code>var(--primary-hover)</code><div class="caption mt-xs">State hover tombol</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#2563EB;color:#fff">#2563EB</div>
+              <div class="swatch-meta"><strong>Secondary Blue</strong><code>var(--secondary)</code><div class="caption mt-xs">Link teks, ikon, focus ring</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#DBEAFE;color:#1E3A8A">#DBEAFE</div>
+              <div class="swatch-meta"><strong>Accent Light</strong><code>var(--accent)</code><div class="caption mt-xs">Background tag, active state</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#EFF6FF;color:#1E3A8A">#EFF6FF</div>
+              <div class="swatch-meta"><strong>Accent Soft</strong><code>var(--accent-soft)</code><div class="caption mt-xs">Hover tabel, th, banner</div></div>
+            </div>
+          </div>
+
+          <div class="title mb-sm">Warna Status &amp; Validasi</div>
+          <div class="color-swatch-grid mb-lg">
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#10B981;color:#fff">#10B981</div>
+              <div class="swatch-meta"><strong>Success (Di-ACC)</strong><code>var(--success)</code><div class="caption mt-xs">Ulasan disetujui, akun aktif</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#F59E0B;color:#fff">#F59E0B</div>
+              <div class="swatch-meta"><strong>Warning (Pending)</strong><code>var(--warning)</code><div class="caption mt-xs">Antrean ulasan, bintang rating</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#E11D48;color:#fff">#E11D48</div>
+              <div class="swatch-meta"><strong>Danger (Ditolak)</strong><code>var(--danger)</code><div class="caption mt-xs">Ulasan ditolak, hapus data</div></div>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-color" style="background:#F8FAFC;color:#1E293B">#F8FAFC</div>
+              <div class="swatch-meta"><strong>Canvas Background</strong><code>var(--bg-canvas)</code><div class="caption mt-xs">Background body seluruh app</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 3. TIPOGRAFI ================= -->
+        <section id="tipografi" class="card p-xl">
+          <span class="overline">Keterbacaan &amp; Hirarki</span>
+          <h2 class="h1 mt-xs mb-sm">3. Panduan Tipografi (Typography)</h2>
+          <p class="body text-muted mb-md">
+            Font utama yang digunakan adalah <strong>Inter</strong> (Google Fonts) dengan fallback ke <code>system-ui, -apple-system, sans-serif</code>. Hindari penggunaan pure black (#000000) untuk teks panjang; gunakan Dark Slate <code>var(--text)</code> (#1E293B).
+          </p>
+
+          <div class="table-wrap mb-lg">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Class Utility</th>
+                  <th>Ukuran / Line Height</th>
+                  <th>Bobot</th>
+                  <th>Contoh Tampilan</th>
+                  <th>Penerapan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>.display</code></td>
+                  <td>44px / 52px</td>
+                  <td>Bold (700)</td>
+                  <td><span class="display" style="font-size:28px;line-height:34px">Judul Utama Hero</span></td>
+                  <td>Hero section landing page</td>
+                </tr>
+                <tr>
+                  <td><code>.h1</code></td>
+                  <td>32px / 40px</td>
+                  <td>Bold (700)</td>
+                  <td><span class="h1" style="font-size:24px;line-height:30px">Judul Halaman</span></td>
+                  <td>Heading utama halaman (Page Header)</td>
+                </tr>
+                <tr>
+                  <td><code>.h2</code></td>
+                  <td>24px / 32px</td>
+                  <td>Semi-Bold (600)</td>
+                  <td><span class="h2" style="font-size:20px;line-height:26px">Judul Bagian Modul</span></td>
+                  <td>Section title pada landing / dashboard</td>
+                </tr>
+                <tr>
+                  <td><code>.title</code></td>
+                  <td>18px / 24px</td>
+                  <td>Semi-Bold (600)</td>
+                  <td><span class="title">Judul Kartu Lowongan</span></td>
+                  <td>Header kartu lowongan, modal title</td>
+                </tr>
+                <tr>
+                  <td><code>.body-lg</code></td>
+                  <td>16px / 24px</td>
+                  <td>Regular (400)</td>
+                  <td><span class="body-lg">Teks pengantar dan narasi profil jurusan.</span></td>
+                  <td>Lead text, deskripsi lowongan</td>
+                </tr>
+                <tr>
+                  <td><code>.body</code></td>
+                  <td>14px / 20px</td>
+                  <td>Regular (400)</td>
+                  <td><span class="body">Teks isi ulasan magang dan tabel data default.</span></td>
+                  <td>Isi konten kartu, isi tabel default</td>
+                </tr>
+                <tr>
+                  <td><code>.label</code></td>
+                  <td>14px / 20px</td>
+                  <td>Semi-Bold (600)</td>
+                  <td><span class="label">Label Formulir &amp; Tombol</span></td>
+                  <td>Label input field, nama pengguna</td>
+                </tr>
+                <tr>
+                  <td><code>.caption</code></td>
+                  <td>12px / 16px</td>
+                  <td>Regular (400)</td>
+                  <td><span class="caption">Tanggal pengajuan: 3 Nov 2026 · NIM: 2341720001</span></td>
+                  <td>Meta info, timestamps, hint bantuan</td>
+                </tr>
+                <tr>
+                  <td><code>.overline</code></td>
+                  <td>12px / 16px</td>
+                  <td>Bold, Uppercase</td>
+                  <td><span class="overline">Kategori Magang</span></td>
+                  <td>Tag sub-header kecil di atas H1/H2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ================= 4. TOMBOL ================= -->
+        <section id="tombol" class="card p-xl">
+          <span class="overline">Komponen Interaktif</span>
+          <h2 class="h1 mt-xs mb-sm">4. Panduan Penggunaan Button</h2>
+          <p class="body text-muted mb-md">
+            Tombol dirancang menggunakan sudut <code>border-radius: 6px</code> (sedikit melengkung tapi tetap struktural akademik). Hindari tombol berbentuk pill lonjong kecuali untuk status badge.
+          </p>
+
+          <!-- Varian Tombol -->
+          <div class="title mb-sm">Varian Tampilan Tombol</div>
+          <div class="flex flex-wrap gap-sm items-center mb-md p-md" style="background:var(--bg-canvas);border-radius:var(--radius)">
+            <button class="btn btn-primary"><span class="material-symbols-outlined">add</span>Primary Button</button>
+            <button class="btn btn-secondary"><span class="material-symbols-outlined">filter_alt</span>Secondary Button</button>
+            <button class="btn btn-tertiary">Tertiary Button</button>
+            <button class="btn btn-ghost">Ghost Button</button>
+            <button class="btn btn-success"><span class="material-symbols-outlined">check</span>Setujui (Approve)</button>
+            <button class="btn btn-danger"><span class="material-symbols-outlined">delete</span>Hapus (Danger)</button>
+            <button class="btn btn-danger-outline"><span class="material-symbols-outlined">block</span>Tolak (Outline)</button>
+          </div>
+
+          <!-- Ukuran Tombol -->
+          <div class="title mb-sm">Ukuran Tombol</div>
+          <div class="flex flex-wrap gap-sm items-center mb-lg p-md" style="background:var(--bg-canvas);border-radius:var(--radius)">
+            <button class="btn btn-primary btn-sm">Small (.btn-sm - 32px)</button>
+            <button class="btn btn-primary">Default Button (40px)</button>
+            <button class="btn btn-primary btn-lg">Large (.btn-lg - 48px)</button>
+            <button class="icon-btn" title="Icon Only"><span class="material-symbols-outlined">edit</span></button>
+            <button class="btn btn-primary is-disabled" disabled>Disabled State</button>
+          </div>
+
+          <!-- Aturan Do & Don't Button -->
+          <div class="rule-box">
+            <div class="rule-card rule-do">
+              <strong><span class="material-symbols-outlined">check_circle</span>Aturan Yang Harus Diikuti (DO)</strong>
+              <ul>
+                <li>Gunakan <strong>maksimal 1 Primary Button</strong> dalam satu modul tampilan agar arah aksi utama jelas bagi pengguna.</li>
+                <li>Gunakan <code>.btn-danger</code> hanya untuk aksi destruktif (hapus data permanen, nonaktifkan akun).</li>
+                <li>Gunakan <code>.btn-success</code> khusus pada keputusan persetujuan moderasi ulasan.</li>
+              </ul>
+            </div>
+            <div class="rule-card rule-dont">
+              <strong><span class="material-symbols-outlined">cancel</span>Hal Yang Dilarang (DON'T)</strong>
+              <ul>
+                <li>Jangan gunakan warna tombol yang tidak ada di token CSS (misalnya kuning terang atau ungu acak).</li>
+                <li>Jangan menumpuk 3 tombol primary dalam satu baris form.</li>
+                <li>Jangan membuat tombol berbentuk bulat penuh (full-pill) untuk tombol aksi submit formulir.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 5. FORMULIR ================= -->
+        <section id="form" class="card p-xl">
+          <span class="overline">Form &amp; Input</span>
+          <h2 class="h1 mt-xs mb-sm">5. Formulir &amp; Input Data</h2>
+          <p class="body text-muted mb-md">
+            Setiap elemen input harus memiliki <code>label</code> yang terletak di atas input dengan teks 14px semi-bold. Focus ring menggunakan outline halus biru <code>var(--secondary)</code>.
+          </p>
+
+          <div class="grid grid-2 mb-md">
+            <div>
+              <div class="form-group">
+                <label class="form-label" for="ex-text">Input Teks Biasa <span class="req">*</span></label>
+                <input class="form-control" id="ex-text" type="text" placeholder="Masukkan nama lowongan…">
+                <span class="form-hint">Hint keterangan tambahan di bawah field.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Input dengan Ikon Depan</label>
+                <div class="input-icon">
+                  <span class="material-symbols-outlined">search</span>
+                  <input class="form-control" type="text" placeholder="Cari posisi atau perusahaan…">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Input Password dengan Toggle Visibility</label>
+                <div class="input-icon">
+                  <span class="material-symbols-outlined">lock</span>
+                  <input class="form-control" type="password" value="rahasia123">
+                  <button type="button" class="input-action" data-toggle-password aria-label="Lihat password">
+                    <span class="material-symbols-outlined">visibility</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="form-group">
+                <label class="form-label">Select Dropdown</label>
+                <select class="form-control">
+                  <option>D4 Teknik Informatika</option>
+                  <option>D4 Sistem Informasi Bisnis</option>
+                  <option>D3 Manajemen Informatika</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">State Error / Invalid</label>
+                <input class="form-control is-invalid" type="text" value="email_salah_format">
+                <div class="form-error">
+                  <span class="material-symbols-outlined">error</span>Format email kampus tidak valid.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Switch Toggle &amp; Checkbox</label>
+                <div class="flex items-center gap-lg mt-xs">
+                  <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                  <label class="check"><input type="checkbox" checked> Ingat Akun Saya</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 6. BADGES & STATUS ================= -->
+        <section id="badges" class="card p-xl">
+          <span class="overline">Status Indicators</span>
+          <h2 class="h1 mt-xs mb-sm">6. Badges, Tags, &amp; Status Indikator</h2>
+          <p class="body text-muted mb-md">
+            Gunakan pemetaan status resmi di bawah untuk menjaga konsistensi makna visual bagi pengguna di seluruh halaman:
+          </p>
+
+          <div class="table-wrap mb-lg">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Komponen Badge</th>
+                  <th>Arti / Kondisi Penggunaan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Pending</strong></td>
+                  <td><span class="badge badge-warning badge-dot">Pending Moderasi</span></td>
+                  <td>Ulasan baru diajukan mahasiswa, menunggu verifikasi Admin Jurusan.</td>
+                </tr>
+                <tr>
+                  <td><strong>Approved / Di-ACC</strong></td>
+                  <td><span class="badge badge-success badge-dot">Di-ACC / Dipublikasi</span></td>
+                  <td>Ulasan disetujui admin dan langsung tampil di Pusat Ulasan.</td>
+                </tr>
+                <tr>
+                  <td><strong>Rejected / Ditolak</strong></td>
+                  <td><span class="badge badge-danger badge-dot">Ditolak</span></td>
+                  <td>Ulasan ditolak admin karena bahasa kasar / melanggar NDA, butuh revisi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Dibuka</strong></td>
+                  <td><span class="badge badge-success">Dibuka</span></td>
+                  <td>Lowongan magang masih aktif menerima lamaran mahasiswa.</td>
+                </tr>
+                <tr>
+                  <td><strong>Ditutup</strong></td>
+                  <td><span class="badge badge-neutral">Ditutup</span></td>
+                  <td>Batas tanggal lowongan telah lewat atau kuota telah terpenuhi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Kategori / Skill</strong></td>
+                  <td><span class="tag">Laravel</span> <span class="tag">MySQL</span></td>
+                  <td>Tag keahlian yang dipelajari pada lowongan atau ulasan.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ================= 7. KARTU ================= -->
+        <section id="cards" class="card p-xl">
+          <span class="overline">Struktur Komponen</span>
+          <h2 class="h1 mt-xs mb-sm">7. Komponen Kartu (Card Patterns)</h2>
+          <p class="body text-muted mb-md">
+            Gunakan kartu berlatar belakang putih (#FFFFFF) dengan border <code>1px solid var(--border)</code> (#E2E8F0) dan bayangan sangat halus <code>box-shadow: var(--shadow-sm)</code>.
+          </p>
+
+          <div class="grid grid-2 mb-md">
+            <!-- Job Card Contoh -->
+            <article class="card card-hover job-card">
+              <div class="card-body">
+                <div class="job-card-head">
+                  <div class="logo-box c1">TL</div>
+                  <div class="meta">
+                    <div class="job-card-company">PT Telkom Indonesia</div>
+                    <span class="badge badge-success badge-dot mt-xs">Dibuka</span>
+                  </div>
+                  <button class="bookmark-btn is-active"><span class="material-symbols-outlined">bookmark</span></button>
+                </div>
+                <h3 class="job-card-title">Backend Developer Intern</h3>
+                <div class="job-meta">
+                  <span><span class="material-symbols-outlined">location_on</span>Bandung · Hybrid</span>
+                  <span><span class="material-symbols-outlined">group</span>Sisa 2 kuota</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <span class="caption">Deadline 28 Nov 2026</span>
+                <button class="btn btn-secondary btn-sm">Lihat Detail</button>
+              </div>
+            </article>
+
+            <!-- Stat Card Contoh -->
+            <div class="card stat-card">
+              <div class="stat-top">
+                <span class="stat-label">Total Lowongan Aktif</span>
+                <div class="stat-icon"><span class="material-symbols-outlined">work</span></div>
+              </div>
+              <div class="stat-value">124</div>
+              <span class="stat-trend up"><span class="material-symbols-outlined" style="font-size:16px">trending_up</span>+8 lowongan baru bulan ini</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 8. ALERTS ================= -->
+        <section id="alerts" class="card p-xl">
+          <span class="overline">Feedback &amp; Notifikasi</span>
+          <h2 class="h1 mt-xs mb-sm">8. Alerts &amp; Pesan Notifikasi (Toast)</h2>
+
+          <div class="flex flex-col gap-sm mb-lg">
+            <div class="alert alert-info">
+              <span class="material-symbols-outlined">info</span>
+              <div><strong>Alert Info:</strong> Data lowongan eksklusif (kuota, batas IPK, kontak) hanya dapat diakses mahasiswa terdaftar.</div>
+            </div>
+            <div class="alert alert-success">
+              <span class="material-symbols-outlined">check_circle</span>
+              <div><strong>Alert Sukses:</strong> Formulir ulasan terbuka otomatis karena tanggal selesai magang telah terlewati.</div>
+            </div>
+            <div class="alert alert-warning">
+              <span class="material-symbols-outlined">warning</span>
+              <div><strong>Alert Peringatan:</strong> Ulasan Anda masih menunggu validasi admin jurusan sebelum dipublikasikan.</div>
+            </div>
+            <div class="alert alert-danger">
+              <span class="material-symbols-outlined">error</span>
+              <div><strong>Alert Bahaya / Ditolak:</strong> Akun ini dinonaktifkan oleh administrator jurusan.</div>
+            </div>
+          </div>
+
+          <div class="p-md" style="background:var(--bg-canvas);border-radius:var(--radius)">
+            <div class="label mb-xs">Uji Komponen Notifikasi Toast</div>
+            <p class="caption text-muted mb-sm">Toast muncul di pojok kanan bawah selama 2.6 detik untuk memberi feedback instan aksi pengguna.</p>
+            <button class="btn btn-secondary" onclick="showToast('Contoh notifikasi toast interaktif!', 'notifications_active')">
+              <span class="material-symbols-outlined">play_arrow</span>Tampilkan Contoh Toast
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= 9. TABEL & DATA DISPLAY ================= -->
+        <section id="tabel" class="card p-xl">
+          <span class="overline">Data Density</span>
+          <h2 class="h1 mt-xs mb-sm">9. Desain Tabel Zebra &amp; Rating Bintang</h2>
+          <p class="body text-muted mb-md">
+            Gunakan tabel baris belang (zebra striping pada baris genap <code>#FAFBFD</code>) dengan hover halus untuk memudahkan dosen dan admin membaca data padat:
+          </p>
+
+          <div class="table-wrap mb-lg">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Mahasiswa</th>
+                  <th>NIM</th>
+                  <th>Mitra Penempatan</th>
+                  <th>Status</th>
+                  <th style="text-align:right">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><div class="cell-user"><span class="avatar sm">RA</span>Rizky Aditya</div></td>
+                  <td>2341720001</td>
+                  <td>PT Telkom Indonesia</td>
+                  <td><span class="badge badge-success badge-dot">Selesai</span></td>
+                  <td style="text-align:right"><button class="btn btn-ghost btn-sm">Edit</button></td>
+                </tr>
+                <tr>
+                  <td><div class="cell-user"><span class="avatar sm soft">NA</span>Nadia Anggraini</div></td>
+                  <td>2241720015</td>
+                  <td>Tokopedia</td>
+                  <td><span class="badge badge-info badge-dot">Berlangsung</span></td>
+                  <td style="text-align:right"><button class="btn btn-ghost btn-sm">Edit</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="title mb-xs">Komponen Rating Bintang Interaktif</div>
+          <p class="caption text-muted mb-sm">Dapat diklik oleh mahasiswa pada formulir pengisian ulasan:</p>
+          <div class="star-input mb-sm" data-value="5">
+            <button><span class="material-symbols-outlined">star</span></button>
+            <button><span class="material-symbols-outlined">star</span></button>
+            <button><span class="material-symbols-outlined">star</span></button>
+            <button><span class="material-symbols-outlined">star</span></button>
+            <button><span class="material-symbols-outlined">star</span></button>
+          </div>
+        </section>
+
+        <!-- ================= 10. PETA FILE & DIRECTORY ================= -->
+        <section id="sitemap" class="card p-xl">
+          <span class="overline">Arsitektur Mockup</span>
+          <h2 class="h1 mt-xs mb-sm">10. Peta Seluruh File Mockup SIMAG-JKB</h2>
+          <p class="body text-muted mb-md">
+            Semua halaman telah dibuat dalam file terpisah yang siap dibuka dan dijadikan referensi langsung:
+          </p>
+
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Modul Halaman</th>
+                  <th>File Mockup</th>
+                  <th>Target Pengguna</th>
+                  <th>Status &amp; Tautan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Landing Page (Home)</strong></td>
+                  <td><code>index.html</code></td>
+                  <td>Publik</td>
+                  <td><a href="index.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Katalog Dasar &amp; Filter Publik</strong></td>
+                  <td><code>katalog.html</code></td>
+                  <td>Publik</td>
+                  <td><a href="katalog.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Gerbang Login Terpusat</strong></td>
+                  <td><code>login.html</code></td>
+                  <td>Mahasiswa &amp; Admin</td>
+                  <td><a href="login.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Registrasi Akun Baru</strong></td>
+                  <td><code>register.html</code></td>
+                  <td>Mahasiswa Baru</td>
+                  <td><a href="register.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Katalog Lengkap &amp; Filter Dinamis</strong></td>
+                  <td><code>mahasiswa/katalog.html</code></td>
+                  <td>Mahasiswa (Login)</td>
+                  <td><a href="mahasiswa/katalog.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Detail Lowongan Eksklusif</strong></td>
+                  <td><code>mahasiswa/detail-lowongan.html</code></td>
+                  <td>Mahasiswa (Login)</td>
+                  <td><a href="mahasiswa/detail-lowongan.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Koleksi Lowongan Favorit</strong></td>
+                  <td><code>mahasiswa/favorit.html</code></td>
+                  <td>Mahasiswa (Login)</td>
+                  <td><a href="mahasiswa/favorit.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Pusat Ulasan Internal Tertutup</strong></td>
+                  <td><code>mahasiswa/pusat-ulasan.html</code></td>
+                  <td>Mahasiswa (Login)</td>
+                  <td><a href="mahasiswa/pusat-ulasan.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Formulir Ulasan &amp; Riwayat Status</strong></td>
+                  <td><code>mahasiswa/ulasan-saya.html</code></td>
+                  <td>Mahasiswa (Login)</td>
+                  <td><a href="mahasiswa/ulasan-saya.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Profil Pengguna &amp; Kredensial</strong></td>
+                  <td><code>mahasiswa/profil.html</code></td>
+                  <td>Mahasiswa (Login)</td>
+                  <td><a href="mahasiswa/profil.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Dashboard Analitik Admin</strong></td>
+                  <td><code>admin/dashboard.html</code></td>
+                  <td>Admin Jurusan</td>
+                  <td><a href="admin/dashboard.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Manajemen Katalog CRUD</strong></td>
+                  <td><code>admin/katalog.html</code></td>
+                  <td>Admin Jurusan</td>
+                  <td><a href="admin/katalog.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Manajemen Pengguna &amp; Penempatan</strong></td>
+                  <td><code>admin/pengguna.html</code></td>
+                  <td>Admin Jurusan</td>
+                  <td><a href="admin/pengguna.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+                <tr>
+                  <td><strong>Moderasi Ulasan (Approve/Reject)</strong></td>
+                  <td><code>admin/moderasi.html</code></td>
+                  <td>Admin Jurusan</td>
+                  <td><a href="admin/moderasi.html" class="btn btn-secondary btn-sm">Buka Halaman →</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand">
+            <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+            <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+          </a>
+          <p class="mt-md" style="max-width:320px">Dokumentasi panduan desain antarmuka resmi SIMAG-JKB untuk anggota tim pengembang sistem.</p>
+        </div>
+        <div>
+          <h4>Tautan Cepat</h4>
+          <ul>
+            <li><a href="index.html">Beranda Publik</a></li>
+            <li><a href="mahasiswa/katalog.html">Portal Mahasiswa</a></li>
+            <li><a href="admin/dashboard.html">Portal Admin</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Komponen</h4>
+          <ul>
+            <li><a href="#warna">Palet Warna</a></li>
+            <li><a href="#tombol">Panduan Button</a></li>
+            <li><a href="#tipografi">Tipografi Inter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Sekretariat JKB</h4>
+          <ul>
+            <li><span class="material-symbols-outlined">location_on</span>Gedung Direktorat Komputer &amp; Bisnis Lt. 2</li>
+            <li><span class="material-symbols-outlined">mail</span>simag.jkb@kampus.ac.id</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SIMAG-JKB · Jurusan Komputer &amp; Bisnis. Hak cipta dilindungi.</span>
+        <span>Design System Version 1.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Akun — SIMAG-JKB</title>
+  <meta name="description" content="Pendaftaran akun mahasiswa SIMAG-JKB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ---- Layout autentikasi (login & register) ---- */
+    .auth { display: grid; grid-template-columns: 5fr 7fr; min-height: 100vh; }
+    .auth-aside { background: var(--primary); color: #fff; padding: var(--space-2xl); display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-xl); position: sticky; top: 0; height: 100vh; }
+    .auth-aside .brand-text strong { color: #fff; }
+    .auth-aside .brand-text small { color: #CBD5E1; }
+    .auth-aside .brand-mark { background: #fff; color: var(--primary); }
+    .auth-aside p.lead { color: #CBD5E1; font-size: 17px; line-height: 26px; margin-top: var(--space-md); max-width: 420px; }
+    .auth-points { list-style: none; display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-xl); }
+    .auth-points li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; }
+    .auth-points .icon-tile { width: 40px; height: 40px; background: rgba(255,255,255,.12); color: #fff; }
+    .auth-points .icon-tile .material-symbols-outlined { font-size: 22px; }
+    .auth-points small { display: block; color: #CBD5E1; font-size: 13px; margin-top: 2px; }
+    .auth-aside .foot { font-size: 13px; color: #94A3B8; }
+    .auth-main { background: #fff; display: flex; flex-direction: column; padding: var(--space-lg) var(--space-2xl); }
+    .auth-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-md); }
+    .auth-form-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: var(--space-xl) 0; }
+    .auth-form { width: 100%; max-width: 520px; }
+    .auth-mobile-brand { display: none; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--space-md); }
+    .pw-strength { display: flex; gap: 4px; margin-top: 2px; }
+    .pw-strength span { flex: 1; height: 4px; border-radius: 999px; background: var(--border); }
+    .pw-strength span.on { background: var(--warning); }
+    @media (max-width: 860px) {
+      .auth { grid-template-columns: 1fr; }
+      .auth-aside { display: none; }
+      .auth-main { padding: var(--space-md); }
+      .auth-mobile-brand { display: flex; }
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="auth">
+
+  <!-- =============== PANEL KIRI (BRANDING) =============== -->
+  <aside class="auth-aside">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+      <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+    </a>
+    <div>
+      <h1 class="h1 text-white">Bergabung dan temukan tempat magang terbaik.</h1>
+      <p class="lead">Daftarkan akun mahasiswa Anda untuk mengakses katalog lengkap, favorit, dan ulasan internal jurusan.</p>
+      <ul class="auth-points">
+        <li><span class="icon-tile"><span class="material-symbols-outlined">badge</span></span><div>Gunakan NIM &amp; email kampus<small>Identitas diverifikasi oleh Admin Jurusan.</small></div></li>
+        <li><span class="icon-tile"><span class="material-symbols-outlined">bookmarks</span></span><div>Simpan lowongan incaran<small>Bandingkan lowongan kapan saja.</small></div></li>
+        <li><span class="icon-tile"><span class="material-symbols-outlined">rate_review</span></span><div>Bagikan pengalaman magang<small>Bantu adik tingkat memilih dengan tepat.</small></div></li>
+      </ul>
+    </div>
+    <div class="foot">© 2026 SIMAG-JKB · Jurusan Komputer &amp; Bisnis</div>
+  </aside>
+
+  <!-- =============== PANEL KANAN (FORM) =============== -->
+  <main class="auth-main">
+    <div class="auth-top">
+      <a href="index.html" class="brand auth-mobile-brand">
+        <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+      </a>
+      <a href="index.html" class="btn btn-ghost btn-sm"><span class="material-symbols-outlined">arrow_back</span>Kembali ke Beranda</a>
+    </div>
+
+    <div class="auth-form-wrap">
+      <div class="auth-form">
+        <h2 class="h2">Buat Akun Mahasiswa</h2>
+        <p class="body text-muted mt-xs mb-lg">Lengkapi data berikut sesuai data akademik Anda.</p>
+
+        <div class="alert alert-info mb-lg">
+          <span class="material-symbols-outlined">hourglass_top</span>
+          <div><div class="alert-title">Menunggu verifikasi admin</div>Setelah mendaftar, akun Anda akan diverifikasi oleh Admin Jurusan (maks. 2×24 jam kerja) sebelum dapat digunakan.</div>
+        </div>
+
+        <form action="login.html" method="get">
+          <div class="form-group">
+            <label class="form-label" for="nama">Nama Lengkap <span class="req">*</span></label>
+            <input class="form-control" id="nama" name="nama" type="text" placeholder="Sesuai data akademik" value="Rizky Aditya Pratama" required>
+          </div>
+
+          <div class="form-row">
+            <!-- Contoh state invalid -->
+            <div class="form-group">
+              <label class="form-label" for="nim">NIM <span class="req">*</span></label>
+              <input class="form-control is-invalid" id="nim" name="nim" type="text" inputmode="numeric" value="23417200" aria-describedby="nim-error" required>
+              <span class="form-error" id="nim-error"><span class="material-symbols-outlined">error</span>NIM harus terdiri dari 10 digit angka.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hp">No. HP <span class="req">*</span></label>
+              <input class="form-control" id="hp" name="hp" type="tel" placeholder="08xxxxxxxxxx" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="prodi">Program Studi <span class="req">*</span></label>
+              <select class="form-control" id="prodi" name="prodi" required>
+                <option value="" disabled selected>Pilih program studi</option>
+                <option>D4 Teknik Informatika</option>
+                <option>D4 Sistem Informasi Bisnis</option>
+                <option>D3 Manajemen Informatika</option>
+                <option>D4 Bisnis Digital</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="angkatan">Angkatan <span class="req">*</span></label>
+              <select class="form-control" id="angkatan" name="angkatan" required>
+                <option value="" disabled selected>Pilih angkatan</option>
+                <option>2026</option>
+                <option>2025</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Contoh hint -->
+          <div class="form-group">
+            <label class="form-label" for="email">Email Kampus <span class="req">*</span></label>
+            <div class="input-icon">
+              <span class="material-symbols-outlined">mail</span>
+              <input class="form-control" id="email" name="email" type="email" placeholder="nama@student.kampus.ac.id" aria-describedby="email-hint" required>
+            </div>
+            <span class="form-hint" id="email-hint">Gunakan email berdomain <strong>@student.kampus.ac.id</strong>. Tautan verifikasi akan dikirim ke email ini.</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="password">Password <span class="req">*</span></label>
+              <div class="input-icon">
+                <span class="material-symbols-outlined">lock</span>
+                <input class="form-control" id="password" name="password" type="password" value="magang26" autocomplete="new-password" required>
+                <button type="button" class="input-action" data-toggle-password aria-label="Tampilkan password"><span class="material-symbols-outlined">visibility</span></button>
+              </div>
+              <div class="pw-strength" aria-hidden="true"><span class="on"></span><span class="on"></span><span></span><span></span></div>
+              <span class="form-hint">Kekuatan: <strong class="text-warning">Sedang</strong> · min. 8 karakter, kombinasi huruf besar, angka &amp; simbol.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="password2">Konfirmasi Password <span class="req">*</span></label>
+              <div class="input-icon">
+                <span class="material-symbols-outlined">lock</span>
+                <input class="form-control" id="password2" name="password2" type="password" placeholder="Ulangi password" autocomplete="new-password" required>
+                <button type="button" class="input-action" data-toggle-password aria-label="Tampilkan password"><span class="material-symbols-outlined">visibility</span></button>
+              </div>
+            </div>
+          </div>
+
+          <label class="check mb-lg"><input type="checkbox" name="setuju" required> <span>Saya menyetujui <a href="#">Syarat &amp; Ketentuan</a> serta <a href="#">Kebijakan Privasi</a> SIMAG-JKB.</span></label>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block"><span class="material-symbols-outlined">person_add</span>Buat Akun</button>
+        </form>
+
+        <p class="body text-muted text-center mt-lg">Sudah punya akun? <a href="login.html" class="fw-600">Masuk di sini</a></p>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

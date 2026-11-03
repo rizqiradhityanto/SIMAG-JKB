@@ -1,0 +1,17 @@
+# File Sistem & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Temporary & Log files
+*.log
+*.tmp
+*.bak

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Lowongan — SIMAG-JKB</title>
+  <meta name="description" content="Katalog dasar lowongan magang mitra resmi Jurusan Komputer & Bisnis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ---- Style khusus halaman Katalog Publik ---- */
+    .page-band { background: #fff; border-bottom: 1px solid var(--border); padding: var(--space-2xl) 0 var(--space-xl); }
+    .page-band p { color: var(--text-muted); margin-top: var(--space-sm); font-size: 16px; max-width: 640px; }
+    .public-search { margin-top: var(--space-lg); display: flex; gap: var(--space-sm); max-width: 760px; }
+    .public-search .input-icon { flex: 1; }
+    .public-search .form-control { height: 48px; }
+    .job-card .card-body { gap: 12px; }
+    .teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center; }
+    .teaser-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: var(--space-md); }
+    .teaser-list li { display: flex; gap: 10px; font-size: 15px; }
+    .teaser-list .material-symbols-outlined { color: var(--secondary); }
+    @media (max-width: 860px) {
+      .teaser-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .public-search { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============== NAVBAR PUBLIK =============== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html" class="active">Katalog Lowongan</a></li>
+        <li><a href="index.html#alur">Alur Penggunaan</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost hide-mobile">Masuk</a>
+        <a href="register.html" class="btn btn-primary hide-mobile">Daftar Akun</a>
+        <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Buka menu"><span class="material-symbols-outlined">menu</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============== PAGE HEADER + PENCARIAN DASAR =============== -->
+  <section class="page-band">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Beranda</a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span>Katalog Lowongan</span>
+      </nav>
+      <h1 class="h1">Katalog Lowongan Magang</h1>
+      <p>Daftar lowongan dari mitra resmi Jurusan Komputer &amp; Bisnis. Pengunjung umum dapat melihat informasi dasar: perusahaan, posisi, dan lokasi.</p>
+
+      <!-- Filter publik: hanya 2 parameter -->
+      <form class="public-search" action="katalog.html" role="search">
+        <div class="input-icon">
+          <span class="material-symbols-outlined">search</span>
+          <input class="form-control" type="text" name="q" placeholder="Nama posisi, mis. Backend Developer" aria-label="Nama posisi">
+        </div>
+        <div class="input-icon">
+          <span class="material-symbols-outlined">location_on</span>
+          <input class="form-control" type="text" name="kota" placeholder="Kota, mis. Bandung" aria-label="Kota">
+        </div>
+        <button class="btn btn-primary btn-lg" type="submit"><span class="material-symbols-outlined">search</span>Cari</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =============== HASIL KATALOG =============== -->
+  <main class="section-sm">
+    <div class="container">
+
+      <!-- Info batasan akses -->
+      <div class="alert alert-info mb-lg">
+        <span class="material-symbols-outlined">info</span>
+        <div class="flex-1">
+          <div class="alert-title">Anda melihat katalog versi publik</div>
+          Detail lowongan seperti <strong>kuota</strong>, <strong>syarat IPK</strong>, <strong>kontak perusahaan</strong>, dan <strong>ulasan kakak tingkat</strong> hanya dapat diakses oleh mahasiswa yang sudah masuk. <a href="login.html" class="fw-600">Masuk sekarang</a> atau <a href="register.html" class="fw-600">daftar akun</a>.
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center flex-wrap gap-sm mb-md">
+        <span class="body text-muted">Menampilkan <strong class="text-primary">124</strong> lowongan aktif</span>
+        <span class="caption">Diperbarui 3 Nov 2026</span>
+      </div>
+
+      <div class="grid grid-3">
+        <!-- Card 1 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c1">TL</div>
+              <div class="meta"><div class="job-card-company">PT Telkom Indonesia</div></div>
+            </div>
+            <h3 class="job-card-title">Backend Developer Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Bandung</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c3">TK</div>
+              <div class="meta"><div class="job-card-company">Tokopedia</div></div>
+            </div>
+            <h3 class="job-card-title">Frontend Engineer Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Jakarta Selatan</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c2">BM</div>
+              <div class="meta"><div class="job-card-company">Bank Mandiri</div></div>
+            </div>
+            <h3 class="job-card-title">Fullstack Developer Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Jakarta Pusat</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c4">BL</div>
+              <div class="meta"><div class="job-card-company">Bukalapak</div></div>
+            </div>
+            <h3 class="job-card-title">QA Automation Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Jakarta Selatan</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c5">AG</div>
+              <div class="meta"><div class="job-card-company">PT Astra Graphia</div></div>
+            </div>
+            <h3 class="job-card-title">Mobile Developer Intern (Flutter)</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Jakarta Pusat</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c1">DS</div>
+              <div class="meta"><div class="job-card-company">Diskominfo Kota Malang</div></div>
+            </div>
+            <h3 class="job-card-title">Web Developer (Pemerintahan)</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Malang</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c3">GJ</div>
+              <div class="meta"><div class="job-card-company">Gojek</div></div>
+            </div>
+            <h3 class="job-card-title">Data Analyst Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Jakarta Selatan</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c4">TV</div>
+              <div class="meta"><div class="job-card-company">Traveloka</div></div>
+            </div>
+            <h3 class="job-card-title">UI/UX Designer Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Tangerang</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+
+        <!-- Card 9 -->
+        <article class="card card-hover job-card">
+          <div class="card-body">
+            <div class="job-card-head">
+              <div class="logo-box c2">PL</div>
+              <div class="meta"><div class="job-card-company">PT PLN (Persero) UID Jatim</div></div>
+            </div>
+            <h3 class="job-card-title">IT Support &amp; Network Intern</h3>
+            <div class="job-meta"><span><span class="material-symbols-outlined">location_on</span>Surabaya</span></div>
+          </div>
+          <div class="card-footer"><a href="login.html" class="btn btn-secondary btn-sm btn-block"><span class="material-symbols-outlined">lock</span>Masuk untuk lihat detail</a></div>
+        </article>
+      </div>
+
+      <!-- Paginasi -->
+      <div class="flex justify-between items-center mt-xl flex-wrap gap-md">
+        <span class="caption">Halaman 1 dari 14</span>
+        <nav class="pagination" aria-label="Paginasi">
+          <a href="#" aria-label="Sebelumnya"><span class="material-symbols-outlined">chevron_left</span></a>
+          <a href="#" class="active">1</a><a href="#">2</a><a href="#">3</a><span>…</span><a href="#">14</a>
+          <a href="#" aria-label="Berikutnya"><span class="material-symbols-outlined">chevron_right</span></a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <!-- =============== TEASER DETAIL TERKUNCI =============== -->
+  <section class="section bg-white" style="border-top:1px solid var(--border)">
+    <div class="container teaser-grid">
+      <div>
+        <span class="overline">Khusus Mahasiswa Terdaftar</span>
+        <h2 class="h1 mt-sm">Lihat lebih dari sekadar nama posisi</h2>
+        <p class="body-lg text-muted mt-md">Setelah masuk, setiap lowongan menampilkan informasi lengkap yang membantu Anda memilih tempat magang secara tepat.</p>
+        <ul class="teaser-list">
+          <li><span class="material-symbols-outlined">group</span>Kuota penerimaan &amp; sisa slot</li>
+          <li><span class="material-symbols-outlined">grade</span>Syarat IPK minimum &amp; program studi</li>
+          <li><span class="material-symbols-outlined">contact_mail</span>Kontak HR / pembimbing lapangan</li>
+          <li><span class="material-symbols-outlined">reviews</span>Rating &amp; ulasan dari kakak tingkat</li>
+        </ul>
+      </div>
+
+      <!-- Contoh detail yang diblur -->
+      <div class="card locked">
+        <div class="locked-blur" aria-hidden="true">
+          <div class="card-header">
+            <div class="flex items-center gap-md">
+              <div class="logo-box c1">TL</div>
+              <div><div class="title">Backend Developer Intern</div><div class="caption">PT Telkom Indonesia · Bandung</div></div>
+            </div>
+            <span class="badge badge-success badge-dot">Dibuka</span>
+          </div>
+          <div class="card-body">
+            <dl class="info-list">
+              <div class="info-row"><dt>Kuota</dt><dd>4 mahasiswa (sisa 2)</dd></div>
+              <div class="info-row"><dt>IPK Minimum</dt><dd>3.25</dd></div>
+              <div class="info-row"><dt>Kontak HR</dt><dd>rekrutmen@telkom.co.id</dd></div>
+              <div class="info-row"><dt>Rating</dt><dd>4.8 / 5 (24 ulasan)</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="locked-overlay">
+          <span class="icon-tile"><span class="material-symbols-outlined">lock</span></span>
+          <div class="title">Detail terkunci</div>
+          <p class="body text-muted">Masuk dengan akun mahasiswa untuk melihat informasi lengkap.</p>
+          <a href="login.html" class="btn btn-primary mt-xs"><span class="material-symbols-outlined">login</span>Masuk</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand">
+            <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+            <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+          </a>
+          <p class="mt-md" style="max-width:320px">Sistem Informasi Magang resmi Jurusan Komputer &amp; Bisnis untuk informasi lowongan dan ulasan magang mahasiswa.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="katalog.html">Katalog Lowongan</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Akun</h4>
+          <ul>
+            <li><a href="login.html">Masuk</a></li>
+            <li><a href="register.html">Daftar</a></li>
+            <li><a href="style-guide.html">Style Guide (Dev)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak Jurusan</h4>
+          <ul>
+            <li><span class="material-symbols-outlined">location_on</span>Gedung Jurusan Komputer &amp; Bisnis, Lt. 2</li>
+            <li><span class="material-symbols-outlined">mail</span>simag.jkb@kampus.ac.id</li>
+            <li><span class="material-symbols-outlined">schedule</span>Senin–Jumat, 08.00–16.00 WIB</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SIMAG-JKB · Jurusan Komputer &amp; Bisnis. Hak cipta dilindungi.</span>
+        <span>Mockup Tahap 2 · v1.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
