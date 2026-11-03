@@ -22,6 +22,22 @@
       overflow: hidden;
     }
 
+    .hero::before {
+      /* ambient glow lembut di belakang ilustrasi kartu */
+      content: '';
+      position: absolute;
+      right: 2%;
+      top: 6%;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, .32) 0%, rgba(37, 99, 235, .1) 45%, transparent 70%);
+      filter: blur(28px);
+      pointer-events: none;
+      z-index: 0;
+      animation: heroGlow 8s ease-in-out infinite alternate;
+    }
+
     .hero::after {
       /* pola grid geometris halus */
       content: '';
@@ -32,6 +48,7 @@
       background-size: 48px 48px;
       mask-image: linear-gradient(to left, #000 20%, transparent 75%);
       -webkit-mask-image: linear-gradient(to left, #000 20%, transparent 75%);
+      animation: heroGridShift 20s linear infinite;
     }
 
     .hero .container {
@@ -56,6 +73,8 @@
       font-size: 13px;
       font-weight: 500;
       margin-bottom: var(--space-lg);
+      backdrop-filter: blur(4px);
+      animation: heroFadeUp .65s cubic-bezier(.22, 1, .36, 1) .05s backwards;
     }
 
     .hero-badge .dot {
@@ -63,6 +82,12 @@
       height: 8px;
       border-radius: 50%;
       background: #6EE7B7;
+      position: relative;
+      animation: pulseDot 2.2s ease-out infinite;
+    }
+
+    .hero h1.display {
+      animation: heroFadeUp .7s cubic-bezier(.22, 1, .36, 1) .14s backwards;
     }
 
     .hero p.lead {
@@ -71,6 +96,7 @@
       line-height: 28px;
       margin-top: var(--space-md);
       max-width: 560px;
+      animation: heroFadeUp .7s cubic-bezier(.22, 1, .36, 1) .23s backwards;
     }
 
     .hero-search {
@@ -82,6 +108,13 @@
       gap: 8px;
       box-shadow: var(--shadow-lg);
       max-width: 600px;
+      transition: transform .25s ease, box-shadow .25s ease;
+      animation: heroFadeUp .7s cubic-bezier(.22, 1, .36, 1) .32s backwards;
+    }
+
+    .hero-search:focus-within {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, .24), 0 0 0 3px rgba(147, 197, 253, .35);
     }
 
     .hero-search .input-icon {
@@ -110,12 +143,19 @@
       color: #CBD5E1;
       font-size: 14px;
       flex-wrap: wrap;
+      animation: heroFadeUp .7s cubic-bezier(.22, 1, .36, 1) .42s backwards;
     }
 
     .hero-trust span {
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .hero-trust span:hover {
+      color: #fff;
+      transform: translateY(-1px);
     }
 
     .hero-trust .material-symbols-outlined {
@@ -133,6 +173,14 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
       padding: var(--space-lg);
+      transition: transform .3s ease, box-shadow .3s ease;
+      will-change: transform;
+    }
+
+    .hero-card:first-child {
+      animation:
+        heroCardIn .75s cubic-bezier(.22, 1, .36, 1) .22s backwards,
+        heroFloatMain 5.5s ease-in-out .97s infinite;
     }
 
     .hero-card+.hero-card {
@@ -141,6 +189,14 @@
 
     .hero-card.offset {
       margin-left: 48px;
+      animation:
+        heroCardIn .75s cubic-bezier(.22, 1, .36, 1) .38s backwards,
+        heroFloatOffset 6.4s ease-in-out 1.13s infinite;
+    }
+
+    .hero-card:hover {
+      animation-play-state: paused;
+      box-shadow: 0 20px 42px rgba(15, 23, 42, .22);
     }
 
     .hero-mini-stat {
@@ -155,6 +211,127 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      will-change: transform;
+      animation:
+        heroCardIn .75s cubic-bezier(.22, 1, .36, 1) .54s backwards,
+        heroFloatStat 4.8s ease-in-out 1.29s infinite;
+    }
+
+    /* ---- Keyframes Animasi Hero ---- */
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heroCardIn {
+      from {
+        opacity: 0;
+        transform: translateY(28px) scale(.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes heroFloatMain {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-9px);
+      }
+    }
+
+    @keyframes heroFloatOffset {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-11px);
+      }
+    }
+
+    @keyframes heroFloatStat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    @keyframes pulseDot {
+      0% {
+        box-shadow: 0 0 0 0 rgba(110, 231, 183, .7);
+      }
+      70% {
+        box-shadow: 0 0 0 8px rgba(110, 231, 183, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(110, 231, 183, 0);
+      }
+    }
+
+    @keyframes heroGlow {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: .75;
+      }
+      100% {
+        transform: translate(-24px, 18px) scale(1.12);
+        opacity: 1;
+      }
+    }
+
+    @keyframes heroGridShift {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 48px 48px;
+      }
+    }
+
+    /* ---- Scroll Reveal ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s cubic-bezier(.22, 1, .36, 1), transform .65s cubic-bezier(.22, 1, .36, 1);
+      transition-delay: var(--reveal-delay, 0s);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero::before,
+      .hero::after,
+      .hero-badge,
+      .hero-badge .dot,
+      .hero h1.display,
+      .hero p.lead,
+      .hero-search,
+      .hero-trust,
+      .hero-card:first-child,
+      .hero-card.offset,
+      .hero-mini-stat {
+        animation: none !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
     }
 
     .stats-strip {
@@ -395,12 +572,16 @@
         <form class="hero-search" action="katalog.html">
           <div class="input-icon">
             <span class="material-symbols-outlined">search</span>
-            <input class="form-control" type="text" name="q" placeholder="Posisi, mis. Frontend Developer">
+            <input class="form-control" type="text" name="q" placeholder="Posisi, mis. Backend Developer"
+              data-typewriter-prefix="Posisi, mis. "
+              data-typewriter="Backend Developer|Frontend Developer|UI/UX Designer|Data Analyst|Mobile Developer">
           </div>
           <div class="sep"></div>
           <div class="input-icon">
             <span class="material-symbols-outlined">location_on</span>
-            <input class="form-control" type="text" name="kota" placeholder="Kota, mis. Bandung">
+            <input class="form-control" type="text" name="kota" placeholder="Kota, mis. Cilacap"
+              data-typewriter-prefix="Kota, mis. "
+              data-typewriter="Cilacap|Bandung|Jakarta|Yogyakarta|Surabaya">
           </div>
           <button class="btn btn-primary btn-lg" type="submit">Cari Lowongan</button>
         </form>
@@ -456,32 +637,32 @@
 
   <!-- =============== STATISTIK =============== -->
   <div class="container stats-strip">
-    <div class="card">
+    <div class="card reveal">
       <div class="item">
         <div class="icon-tile"><span class="material-symbols-outlined">apartment</span></div>
         <div>
-          <div class="num">86</div>
+          <div class="num" data-count="86">86</div>
           <div class="caption">Mitra Perusahaan</div>
         </div>
       </div>
       <div class="item">
         <div class="icon-tile"><span class="material-symbols-outlined">work</span></div>
         <div>
-          <div class="num">124</div>
+          <div class="num" data-count="124">124</div>
           <div class="caption">Lowongan Aktif</div>
         </div>
       </div>
       <div class="item">
         <div class="icon-tile"><span class="material-symbols-outlined">groups</span></div>
         <div>
-          <div class="num">1.250+</div>
+          <div class="num" data-count="1250" data-suffix="+">1.250+</div>
           <div class="caption">Mahasiswa Terdaftar</div>
         </div>
       </div>
       <div class="item">
         <div class="icon-tile"><span class="material-symbols-outlined">rate_review</span></div>
         <div>
-          <div class="num">640</div>
+          <div class="num" data-count="640">640</div>
           <div class="caption">Ulasan Terverifikasi</div>
         </div>
       </div>
@@ -491,7 +672,7 @@
   <!-- =============== PROFIL / TENTANG =============== -->
   <section class="section" id="tentang">
     <div class="container grid grid-2 items-center" style="gap:var(--space-2xl)">
-      <div>
+      <div class="reveal">
         <span class="overline">Tentang SIMAG-JKB</span>
         <h2 class="h1 mt-sm">Satu pintu informasi magang untuk Jurusan Komputer &amp; Bisnis</h2>
         <p class="body-lg text-muted mt-md">Selama ini informasi magang tersebar di grup chat, poster, dan cerita dari
@@ -500,22 +681,22 @@
         <p class="body-lg text-muted mt-md">Hasilnya, adik tingkat dapat memilih tempat magang dengan lebih percaya diri
           — berdasarkan data, bukan sekadar tebakan.</p>
       </div>
-      <div class="grid grid-2">
-        <div class="card p-lg"><span class="material-symbols-outlined text-secondary"
+      <div class="grid grid-2" data-reveal-group>
+        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
             style="font-size:28px">account_balance</span>
           <div class="title mt-sm">Dikelola Jurusan</div>
           <p class="body text-muted mt-xs">Data mitra &amp; lowongan diinput dan divalidasi oleh Admin Jurusan.</p>
         </div>
-        <div class="card p-lg"><span class="material-symbols-outlined text-secondary"
+        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
             style="font-size:28px">fact_check</span>
           <div class="title mt-sm">Ulasan Tervalidasi</div>
           <p class="body text-muted mt-xs">Hanya mahasiswa yang benar-benar selesai magang yang dapat mengulas.</p>
         </div>
-        <div class="card p-lg"><span class="material-symbols-outlined text-secondary" style="font-size:28px">tune</span>
+        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary" style="font-size:28px">tune</span>
           <div class="title mt-sm">Filter Relevan</div>
           <p class="body text-muted mt-xs">Cari berdasarkan program studi, keahlian, kategori, hingga kota.</p>
         </div>
-        <div class="card p-lg"><span class="material-symbols-outlined text-secondary"
+        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
             style="font-size:28px">devices</span>
           <div class="title mt-sm">Akses Di Mana Saja</div>
           <p class="body text-muted mt-xs">Tampilan responsif untuk laptop maupun ponsel.</p>
@@ -528,38 +709,38 @@
   <section class="section bg-white" id="fitur"
     style="border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="overline">Keunggulan Fitur</span>
         <h2 class="h1">Dirancang untuk kebutuhan mahasiswa dan jurusan</h2>
         <p>Fitur-fitur utama yang membantu proses pencarian magang menjadi lebih terarah.</p>
       </div>
-      <div class="grid grid-3">
-        <div class="card feature-card card-hover">
+      <div class="grid grid-3" data-reveal-group>
+        <div class="card feature-card card-hover reveal">
           <div class="icon-tile"><span class="material-symbols-outlined">travel_explore</span></div>
           <h3 class="title">Katalog Lowongan Terpusat</h3>
           <p>Seluruh lowongan dari mitra resmi jurusan dalam satu etalase, lengkap dengan kuota dan persyaratan.</p>
         </div>
-        <div class="card feature-card card-hover">
+        <div class="card feature-card card-hover reveal">
           <div class="icon-tile"><span class="material-symbols-outlined">filter_alt</span></div>
           <h3 class="title">Filter Multi-Parameter</h3>
           <p>Saring lowongan berdasarkan program studi, keahlian, kategori industri, dan lokasi secara bersamaan.</p>
         </div>
-        <div class="card feature-card card-hover">
+        <div class="card feature-card card-hover reveal">
           <div class="icon-tile"><span class="material-symbols-outlined">bookmarks</span></div>
           <h3 class="title">Koleksi Favorit</h3>
           <p>Simpan lowongan incaran dan bandingkan nanti tanpa perlu mencari ulang.</p>
         </div>
-        <div class="card feature-card card-hover">
+        <div class="card feature-card card-hover reveal">
           <div class="icon-tile"><span class="material-symbols-outlined">reviews</span></div>
           <h3 class="title">Ulasan &amp; Rating Internal</h3>
           <p>Baca pengalaman jujur kakak tingkat — hanya bisa diakses oleh mahasiswa terdaftar.</p>
         </div>
-        <div class="card feature-card card-hover">
+        <div class="card feature-card card-hover reveal">
           <div class="icon-tile"><span class="material-symbols-outlined">event_available</span></div>
           <h3 class="title">Validasi Waktu Otomatis</h3>
           <p>Formulir ulasan terbuka otomatis setelah tanggal selesai magang Anda terlewati.</p>
         </div>
-        <div class="card feature-card card-hover">
+        <div class="card feature-card card-hover reveal">
           <div class="icon-tile"><span class="material-symbols-outlined">gavel</span></div>
           <h3 class="title">Moderasi Transparan</h3>
           <p>Lacak status ulasan Anda: Pending, Disetujui, atau Ditolak beserta catatan admin.</p>
@@ -571,36 +752,36 @@
   <!-- =============== HOW IT WORKS =============== -->
   <section class="section" id="alur">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="overline">How It Works</span>
         <h2 class="h1">Empat langkah sederhana</h2>
         <p>Dari membuat akun hingga berbagi pengalaman magang Anda.</p>
       </div>
-      <div class="steps">
-        <div class="step">
+      <div class="steps" data-reveal-group>
+        <div class="step reveal">
           <div class="step-num">1</div>
           <h3>Buat Akun</h3>
           <p>Daftar menggunakan NIM dan email kampus, lalu verifikasi akun Anda.</p>
         </div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step-num">2</div>
           <h3>Jelajahi Katalog</h3>
           <p>Gunakan filter untuk menemukan lowongan yang sesuai prodi dan keahlian.</p>
         </div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step-num">3</div>
           <h3>Simpan &amp; Pelajari</h3>
           <p>Bookmark lowongan, cek detail kuota, IPK, dan baca ulasan internal.</p>
         </div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step-num">4</div>
           <h3>Beri Ulasan</h3>
           <p>Setelah magang selesai, bagikan rating &amp; feedback untuk adik tingkat.</p>
         </div>
       </div>
 
-      <div class="grid grid-2 mt-2xl">
-        <div class="card role-card">
+      <div class="grid grid-2 mt-2xl" data-reveal-group>
+        <div class="card role-card reveal">
           <div class="flex items-center gap-md">
             <div class="icon-tile"><span class="material-symbols-outlined">person</span></div>
             <div>
@@ -615,7 +796,7 @@
             <li><span class="material-symbols-outlined">check_circle</span>Baca &amp; tulis ulasan tempat magang</li>
           </ul>
         </div>
-        <div class="card role-card">
+        <div class="card role-card reveal">
           <div class="flex items-center gap-md">
             <div class="icon-tile"><span class="material-symbols-outlined">admin_panel_settings</span></div>
             <div>
@@ -638,11 +819,11 @@
   <!-- =============== FAQ =============== -->
   <section class="section bg-white" id="faq" style="border-top:1px solid var(--border)">
     <div class="container" style="max-width:820px">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="overline">FAQ</span>
         <h2 class="h1">Pertanyaan yang sering diajukan</h2>
       </div>
-      <div class="accordion" data-accordion="single">
+      <div class="accordion reveal" data-accordion="single">
         <div class="accordion-item open">
           <button class="accordion-trigger">Siapa saja yang dapat menggunakan SIMAG-JKB?<span
               class="material-symbols-outlined">expand_more</span></button>
@@ -682,7 +863,7 @@
   <!-- =============== CTA =============== -->
   <section class="section-sm">
     <div class="container">
-      <div class="cta">
+      <div class="cta reveal">
         <div style="position:relative;z-index:1">
           <h2 class="h1 text-white">Siap mencari tempat magang?</h2>
           <p>Buat akun sekarang dan akses seluruh detail lowongan serta ulasan internal.</p>
@@ -734,7 +915,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 SIMAG-JKB · Jurusan Komputer &amp; Bisnis. Hak cipta dilindungi.</span>
+        <span>© 2026 SIMAG-JKB · Kelompok 2. Hak cipta dilindungi.</span>
         <span>Mockup Tahap 2 · v1.0</span>
       </div>
     </div>
