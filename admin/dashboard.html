@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,76 +8,86 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0"
+    rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <style>
     /* Style spesifik grafik jika ada */
   </style>
 </head>
+
 <body>
-<div class="app">
+  <div class="app">
 
-  <!-- SIDEBAR ADMIN -->
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <a href="dashboard.html" class="brand">
-        <span class="brand-mark"><span class="material-symbols-outlined">admin_panel_settings</span></span>
-        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Panel Admin Jurusan</small></span>
-      </a>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="sidebar-section">Utama</div>
-      <a href="dashboard.html" class="sidebar-link active"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
-      <div class="sidebar-section">Data Master</div>
-      <a href="katalog.html" class="sidebar-link"><span class="material-symbols-outlined">work</span>Manajemen Katalog</a>
-      <a href="pengguna.html" class="sidebar-link"><span class="material-symbols-outlined">group</span>Manajemen Pengguna</a>
-      <div class="sidebar-section">Moderasi</div>
-      <a href="moderasi.html" class="sidebar-link"><span class="material-symbols-outlined">gavel</span>Moderasi Ulasan<span class="count">12</span></a>
-      <div class="sidebar-section">Sistem</div>
-      <a href="../login.html" class="sidebar-link"><span class="material-symbols-outlined">logout</span>Keluar</a>
-    </nav>
-    <div class="sidebar-footer">
-      <div class="sidebar-user">
-        <span class="avatar">SR</span>
-        <div class="info"><strong>Siti Rahmawati, M.Kom</strong><small>Admin Jurusan</small></div>
+    <!-- SIDEBAR ADMIN -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <a href="dashboard.html" class="brand">
+          <span class="brand-mark"><span class="material-symbols-outlined">admin_panel_settings</span></span>
+          <span class="brand-text"><strong>SIMAG-JKB</strong><small>Panel Admin Jurusan</small></span>
+        </a>
       </div>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div class="app-main">
-    <header class="topbar">
-      <div class="flex items-center gap-sm flex-1">
-        <button class="icon-btn menu-btn" data-sidebar-toggle aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
-        <div class="input-icon topbar-search">
-          <span class="material-symbols-outlined">search</span>
-          <input class="form-control" type="search" placeholder="Cari data…">
-        </div>
-      </div>
-      <div class="topbar-actions">
-        <button class="icon-btn" aria-label="Notifikasi"><span class="material-symbols-outlined">notifications</span><span class="dot"></span></button>
-        <span class="avatar">SR</span>
-      </div>
-    </header>
-
-    <main class="app-content">
-      <nav class="breadcrumb">
-        <a href="dashboard.html">Admin Panel</a>
-        <span class="material-symbols-outlined">chevron_right</span>
-        <span>Dashboard</span>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">Utama</div>
+        <a href="dashboard.html" class="sidebar-link active"><span
+            class="material-symbols-outlined">dashboard</span>Dashboard</a>
+        <div class="sidebar-section">Data Master</div>
+        <a href="katalog.html" class="sidebar-link"><span class="material-symbols-outlined">work</span>Manajemen
+          Katalog</a>
+        <a href="pengguna.html" class="sidebar-link"><span class="material-symbols-outlined">group</span>Manajemen
+          Pengguna</a>
+        <div class="sidebar-section">Moderasi</div>
+        <a href="moderasi.html" class="sidebar-link"><span class="material-symbols-outlined">gavel</span>Moderasi
+          Ulasan<span class="count">12</span></a>
+        <div class="sidebar-section">Sistem</div>
+        <a href="../login.html" class="sidebar-link"><span class="material-symbols-outlined">logout</span>Keluar</a>
       </nav>
-
-      <div class="page-header">
-        <div>
-          <h1 class="h1">Dashboard Analitik Utama</h1>
-          <p>Panel metrik analitik jumlah lowongan aktif, total pendaftar, dan antrean ulasan yang belum divalidasi.</p>
-        </div>
-        <div class="flex gap-sm">
-          <button class="btn btn-secondary"><span class="material-symbols-outlined">download</span>Unduh Laporan</button>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <span class="avatar">SR</span>
+          <div class="info"><strong>Siti Rahmawati, M.Kom</strong><small>Admin Jurusan</small></div>
         </div>
       </div>
+    </aside>
 
-      <!-- ========================================================
+    <!-- MAIN -->
+    <div class="app-main">
+      <header class="topbar">
+        <div class="flex items-center gap-sm flex-1">
+          <button class="icon-btn menu-btn" data-sidebar-toggle aria-label="Menu"><span
+              class="material-symbols-outlined">menu</span></button>
+          <div class="input-icon topbar-search">
+            <span class="material-symbols-outlined">search</span>
+            <input class="form-control" type="search" placeholder="Cari data…">
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" aria-label="Notifikasi"><span
+              class="material-symbols-outlined">notifications</span><span class="dot"></span></button>
+          <span class="avatar">SR</span>
+        </div>
+      </header>
+
+      <main class="app-content">
+        <nav class="breadcrumb">
+          <a href="dashboard.html">Admin Panel</a>
+          <span class="material-symbols-outlined">chevron_right</span>
+          <span>Dashboard</span>
+        </nav>
+
+        <div class="page-header">
+          <div>
+            <h1 class="h1">Dashboard Analitik Utama</h1>
+            <p>Panel metrik analitik jumlah lowongan aktif, total pendaftar, dan antrean ulasan yang belum divalidasi.
+            </p>
+          </div>
+          <div class="flex gap-sm">
+            <button class="btn btn-secondary"><span class="material-symbols-outlined">download</span>Unduh
+              Laporan</button>
+          </div>
+        </div>
+
+        <!-- ========================================================
            AREA KERJA ANGGOTA 4:
            Kebutuhan:
            1. 4 Kartu Metrik KPI (.grid.grid-4):
@@ -87,22 +98,24 @@
            2. Grafik Ringkasan Pendaftar Bulanan & Card Antrean Cepat Moderasi
            3. Tabel Ringkas Lowongan Terbaru
            ======================================================== -->
-      <div class="card p-xl text-center">
-        <div class="empty-state">
-          <div class="icon-wrap">
-            <span class="material-symbols-outlined">dashboard</span>
+        <div class="card p-xl text-center">
+          <div class="empty-state">
+            <div class="icon-wrap">
+              <span class="material-symbols-outlined">dashboard</span>
+            </div>
+            <h2 class="h2 mb-xs">Area Kerja Anggota 4: Dashboard Utama Admin</h2>
+            <p class="body text-muted mb-lg" style="max-width:560px;margin-left:auto;margin-right:auto">
+              Ganti blok ini dengan susunan kartu metrik statistik KPI, ringkasan grafik bulanan, dan antrean ulasan
+              pending.
+            </p>
           </div>
-          <h2 class="h2 mb-xs">Area Kerja Anggota 4: Dashboard Utama Admin</h2>
-          <p class="body text-muted mb-lg" style="max-width:560px;margin-left:auto;margin-right:auto">
-            Ganti blok ini dengan susunan kartu metrik statistik KPI, ringkasan grafik bulanan, dan antrean ulasan pending.
-          </p>
         </div>
-      </div>
-      <!-- ======================================================== -->
+        <!-- ======================================================== -->
 
-    </main>
+      </main>
+    </div>
   </div>
-</div>
-<script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
+
 </html>
