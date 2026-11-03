@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Layout Publik — SIMAG-JKB</title>
+  <!-- Google Fonts: Inter & Material Symbols Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <!-- Stylesheet Utama (Shared Native CSS) -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Jika butuh style khusus halaman ini, tulis di bawah -->
+  <style>
+    /* CSS spesifik halaman ini (opsional) */
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       NAVBAR PUBLIK (MASTER HEADER)
+       ======================================================== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Beranda</a></li>
+        <li><a href="../katalog.html">Katalog Lowongan</a></li>
+        <li><a href="../index.html#alur">Alur Penggunaan</a></li>
+        <li><a href="../index.html#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="../login.html" class="btn btn-ghost hide-mobile">Masuk</a>
+        <a href="../register.html" class="btn btn-primary hide-mobile">Daftar Akun</a>
+        <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Buka menu"><span class="material-symbols-outlined">menu</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       KONTEN UTAMA (SLOT AREA KERJA ANGGOTA)
+       Teman-teman tinggal coding di dalam tag <main> di bawah!
+       ======================================================== -->
+  <main class="section">
+    <div class="container">
+
+      <!-- Breadcrumb Navigasi Halaman -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Beranda</a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span>Nama Halaman Anda</span>
+      </nav>
+
+      <!-- Judul Halaman -->
+      <div class="page-header">
+        <div>
+          <h1 class="h1">Judul Halaman Anda</h1>
+          <p>Deskripsi singkat fungsi halaman ini untuk pengguna.</p>
+        </div>
+        <div>
+          <!-- Tombol aksi utama halaman jika ada (opsional) -->
+          <button class="btn btn-primary"><span class="material-symbols-outlined">search</span>Tombol Aksi</button>
+        </div>
+      </div>
+
+      <!-- KONTEN KOSONG (MULAI CODING DI SINI) -->
+      <div class="card p-xl text-center">
+        <div class="empty-state">
+          <div class="icon-wrap">
+            <span class="material-symbols-outlined">code</span>
+          </div>
+          <h2 class="h2 mb-xs">Slot Konten Halaman Publik</h2>
+          <p class="body text-muted mb-lg" style="max-width:520px;margin-left:auto;margin-right:auto">
+            Ganti blok card ini dengan komponen HTML yang menjadi tugas Anda (misal: formulir, etalase katalog, filter, dll). Referensi tombol dan form dapat dilihat di file <code>style-guide.html</code>.
+          </p>
+        </div>
+      </div>
+      <!-- AKHIR KONTEN KOSONG -->
+
+    </div>
+  </main>
+
+  <!-- ========================================================
+       FOOTER PUBLIK (MASTER FOOTER)
+       ======================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="brand">
+            <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+            <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+          </a>
+          <p class="mt-md" style="max-width:320px">Sistem Informasi Magang resmi Jurusan Komputer &amp; Bisnis untuk informasi lowongan dan ulasan magang mahasiswa.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../katalog.html">Katalog Lowongan</a></li>
+            <li><a href="../index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Akun</h4>
+          <ul>
+            <li><a href="../login.html">Masuk</a></li>
+            <li><a href="../register.html">Daftar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak Jurusan</h4>
+          <ul>
+            <li><span class="material-symbols-outlined">location_on</span>Gedung Jurusan Komputer &amp; Bisnis, Lt. 2</li>
+            <li><span class="material-symbols-outlined">mail</span>simag.jkb@kampus.ac.id</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SIMAG-JKB · Jurusan Komputer &amp; Bisnis. Hak cipta dilindungi.</span>
+        <span>Template Master Publik</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script JavaScript Interaksi Bersama -->
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIMAG-JKB — Sistem Informasi Magang Jurusan Komputer & Bisnis</title>
+  <meta name="description" content="Portal resmi informasi lowongan dan ulasan magang mahasiswa Jurusan Komputer & Bisnis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ---- Style khusus halaman Landing ---- */
+    .hero { background: var(--primary); color: #fff; position: relative; overflow: hidden; }
+    .hero::after { /* pola grid geometris halus */
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to left, #000 20%, transparent 75%);
+      -webkit-mask-image: linear-gradient(to left, #000 20%, transparent 75%);
+    }
+    .hero .container { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-2xl); align-items: center; padding-top: 80px; padding-bottom: 96px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); font-size: 13px; font-weight: 500; margin-bottom: var(--space-lg); }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #6EE7B7; }
+    .hero p.lead { color: #CBD5E1; font-size: 18px; line-height: 28px; margin-top: var(--space-md); max-width: 560px; }
+    .hero-search { margin-top: var(--space-xl); background: #fff; border-radius: var(--radius-lg); padding: 8px; display: flex; gap: 8px; box-shadow: var(--shadow-lg); max-width: 600px; }
+    .hero-search .input-icon { flex: 1; }
+    .hero-search .form-control { border: 0; height: 48px; }
+    .hero-search .form-control:focus { box-shadow: none; }
+    .hero-search .sep { width: 1px; background: var(--border); margin: 8px 0; }
+    .hero-trust { display: flex; gap: var(--space-lg); margin-top: var(--space-lg); color: #CBD5E1; font-size: 14px; flex-wrap: wrap; }
+    .hero-trust span { display: flex; align-items: center; gap: 6px; }
+    .hero-trust .material-symbols-outlined { color: #93C5FD; font-size: 18px; }
+
+    .hero-visual { position: relative; }
+    .hero-card { background: #fff; color: var(--text); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: var(--space-lg); }
+    .hero-card + .hero-card { margin-top: var(--space-md); }
+    .hero-card.offset { margin-left: 48px; }
+    .hero-mini-stat { position: absolute; left: -28px; bottom: -28px; background: #fff; color: var(--text); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); padding: 14px 18px; display: flex; align-items: center; gap: 12px; }
+
+    .stats-strip { margin-top: -48px; position: relative; z-index: 2; }
+    .stats-strip .card { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stats-strip .item { padding: var(--space-lg); display: flex; gap: var(--space-md); align-items: center; }
+    .stats-strip .item + .item { border-left: 1px solid var(--border); }
+    .stats-strip .num { font-size: 26px; font-weight: 700; line-height: 1.1; color: var(--primary); }
+
+    .section-head { text-align: center; max-width: 640px; margin: 0 auto var(--space-2xl); }
+    .section-head .h1 { margin-top: var(--space-sm); }
+    .section-head p { color: var(--text-muted); margin-top: var(--space-md); font-size: 17px; }
+
+    .feature-card { padding: var(--space-lg); }
+    .feature-card h3 { margin: var(--space-md) 0 var(--space-sm); }
+    .feature-card p { color: var(--text-muted); font-size: 15px; }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); position: relative; }
+    .steps::before { content: ''; position: absolute; top: 20px; left: 12%; right: 12%; height: 2px; background: repeating-linear-gradient(90deg, var(--border-strong) 0 8px, transparent 8px 14px); }
+    .step { position: relative; text-align: center; padding: 0 var(--space-sm); }
+    .step .step-num { margin: 0 auto var(--space-md); box-shadow: 0 0 0 6px var(--bg-canvas); }
+    .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+    .step p { font-size: 14px; color: var(--text-muted); }
+
+    .role-card { padding: var(--space-xl); }
+    .role-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: var(--space-md); }
+    .role-card li { display: flex; gap: 10px; font-size: 15px; }
+    .role-card li .material-symbols-outlined { color: var(--success); font-size: 20px; }
+
+    .cta { background: var(--primary); border-radius: var(--radius-lg); padding: var(--space-2xl); color: #fff; display: flex; align-items: center; justify-content: space-between; gap: var(--space-xl); position: relative; overflow: hidden; }
+    .cta::after { content: ''; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px; border: 40px solid rgba(255,255,255,.06); border-radius: 50%; }
+    .cta p { color: #CBD5E1; margin-top: 8px; }
+
+    @media (max-width: 1024px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .steps { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); }
+      .steps::before { display: none; }
+    }
+    @media (max-width: 640px) {
+      .stats-strip .card { grid-template-columns: repeat(2, 1fr); }
+      .stats-strip .item:nth-child(3) { border-left: 0; }
+      .stats-strip .item:nth-child(n+3) { border-top: 1px solid var(--border); }
+      .hero-search { flex-direction: column; }
+      .hero-search .sep { display: none; }
+      .steps { grid-template-columns: 1fr; }
+      .cta { flex-direction: column; align-items: flex-start; padding: var(--space-xl); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============== NAVBAR PUBLIK =============== -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="katalog.html">Katalog Lowongan</a></li>
+        <li><a href="#alur">Alur Penggunaan</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost hide-mobile">Masuk</a>
+        <a href="register.html" class="btn btn-primary hide-mobile">Daftar Akun</a>
+        <button class="icon-btn nav-toggle" data-nav-toggle aria-label="Buka menu"><span class="material-symbols-outlined">menu</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============== HERO =============== -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="hero-badge"><span class="dot"></span>Tahun Akademik 2026/2027 · Semester Ganjil</span>
+        <h1 class="display">Temukan tempat magang terbaik, berdasarkan pengalaman nyata kakak tingkat.</h1>
+        <p class="lead">SIMAG-JKB adalah portal resmi jurusan yang menghimpun lowongan magang mitra industri terverifikasi beserta ulasan jujur dari mahasiswa yang telah menyelesaikan magang.</p>
+
+        <form class="hero-search" action="katalog.html">
+          <div class="input-icon">
+            <span class="material-symbols-outlined">search</span>
+            <input class="form-control" type="text" name="q" placeholder="Posisi, mis. Frontend Developer">
+          </div>
+          <div class="sep"></div>
+          <div class="input-icon">
+            <span class="material-symbols-outlined">location_on</span>
+            <input class="form-control" type="text" name="kota" placeholder="Kota, mis. Bandung">
+          </div>
+          <button class="btn btn-primary btn-lg" type="submit">Cari Lowongan</button>
+        </form>
+
+        <div class="hero-trust">
+          <span><span class="material-symbols-outlined">verified</span>Mitra diverifikasi jurusan</span>
+          <span><span class="material-symbols-outlined">shield_person</span>Ulasan dimoderasi admin</span>
+          <span><span class="material-symbols-outlined">lock</span>Akses khusus civitas</span>
+        </div>
+      </div>
+
+      <!-- Ilustrasi berupa kartu UI (bukan gambar) -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-card">
+          <div class="flex gap-md items-start">
+            <div class="logo-box c1">TL</div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <span class="caption">PT Telkom Indonesia</span>
+                <span class="badge badge-success badge-dot">Dibuka</span>
+              </div>
+              <div class="title mt-xs">Backend Developer Intern</div>
+              <div class="flex gap-sm mt-sm flex-wrap">
+                <span class="tag">Laravel</span><span class="tag">REST API</span><span class="tag">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card offset">
+          <div class="flex items-center justify-between mb-sm">
+            <div class="flex items-center gap-sm">
+              <span class="avatar sm soft">NA</span>
+              <span class="label">Nadia A. · D4 SIB</span>
+            </div>
+            <div class="stars"><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span></div>
+          </div>
+          <p class="body text-muted">"Mentor sangat suportif, project-nya dipakai langsung oleh tim internal. Sangat direkomendasikan!"</p>
+        </div>
+        <div class="hero-mini-stat">
+          <div class="icon-tile" style="width:40px;height:40px"><span class="material-symbols-outlined">reviews</span></div>
+          <div><div class="title">4.6 / 5</div><div class="caption">Rata-rata kepuasan magang</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== STATISTIK =============== -->
+  <div class="container stats-strip">
+    <div class="card">
+      <div class="item"><div class="icon-tile"><span class="material-symbols-outlined">apartment</span></div><div><div class="num">86</div><div class="caption">Mitra Perusahaan</div></div></div>
+      <div class="item"><div class="icon-tile"><span class="material-symbols-outlined">work</span></div><div><div class="num">124</div><div class="caption">Lowongan Aktif</div></div></div>
+      <div class="item"><div class="icon-tile"><span class="material-symbols-outlined">groups</span></div><div><div class="num">1.250+</div><div class="caption">Mahasiswa Terdaftar</div></div></div>
+      <div class="item"><div class="icon-tile"><span class="material-symbols-outlined">rate_review</span></div><div><div class="num">640</div><div class="caption">Ulasan Terverifikasi</div></div></div>
+    </div>
+  </div>
+
+  <!-- =============== PROFIL / TENTANG =============== -->
+  <section class="section" id="tentang">
+    <div class="container grid grid-2 items-center" style="gap:var(--space-2xl)">
+      <div>
+        <span class="overline">Tentang SIMAG-JKB</span>
+        <h2 class="h1 mt-sm">Satu pintu informasi magang untuk Jurusan Komputer &amp; Bisnis</h2>
+        <p class="body-lg text-muted mt-md">Selama ini informasi magang tersebar di grup chat, poster, dan cerita dari mulut ke mulut. SIMAG-JKB merapikan semuanya: data lowongan dikelola langsung oleh Admin Jurusan, dan setiap mahasiswa yang telah selesai magang dapat membagikan pengalamannya secara terstruktur.</p>
+        <p class="body-lg text-muted mt-md">Hasilnya, adik tingkat dapat memilih tempat magang dengan lebih percaya diri — berdasarkan data, bukan sekadar tebakan.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card p-lg"><span class="material-symbols-outlined text-secondary" style="font-size:28px">account_balance</span><div class="title mt-sm">Dikelola Jurusan</div><p class="body text-muted mt-xs">Data mitra &amp; lowongan diinput dan divalidasi oleh Admin Jurusan.</p></div>
+        <div class="card p-lg"><span class="material-symbols-outlined text-secondary" style="font-size:28px">fact_check</span><div class="title mt-sm">Ulasan Tervalidasi</div><p class="body text-muted mt-xs">Hanya mahasiswa yang benar-benar selesai magang yang dapat mengulas.</p></div>
+        <div class="card p-lg"><span class="material-symbols-outlined text-secondary" style="font-size:28px">tune</span><div class="title mt-sm">Filter Relevan</div><p class="body text-muted mt-xs">Cari berdasarkan program studi, keahlian, kategori, hingga kota.</p></div>
+        <div class="card p-lg"><span class="material-symbols-outlined text-secondary" style="font-size:28px">devices</span><div class="title mt-sm">Akses Di Mana Saja</div><p class="body text-muted mt-xs">Tampilan responsif untuk laptop maupun ponsel.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== KEUNGGULAN FITUR =============== -->
+  <section class="section bg-white" id="fitur" style="border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="section-head">
+        <span class="overline">Keunggulan Fitur</span>
+        <h2 class="h1">Dirancang untuk kebutuhan mahasiswa dan jurusan</h2>
+        <p>Fitur-fitur utama yang membantu proses pencarian magang menjadi lebih terarah.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card feature-card card-hover">
+          <div class="icon-tile"><span class="material-symbols-outlined">travel_explore</span></div>
+          <h3 class="title">Katalog Lowongan Terpusat</h3>
+          <p>Seluruh lowongan dari mitra resmi jurusan dalam satu etalase, lengkap dengan kuota dan persyaratan.</p>
+        </div>
+        <div class="card feature-card card-hover">
+          <div class="icon-tile"><span class="material-symbols-outlined">filter_alt</span></div>
+          <h3 class="title">Filter Multi-Parameter</h3>
+          <p>Saring lowongan berdasarkan program studi, keahlian, kategori industri, dan lokasi secara bersamaan.</p>
+        </div>
+        <div class="card feature-card card-hover">
+          <div class="icon-tile"><span class="material-symbols-outlined">bookmarks</span></div>
+          <h3 class="title">Koleksi Favorit</h3>
+          <p>Simpan lowongan incaran dan bandingkan nanti tanpa perlu mencari ulang.</p>
+        </div>
+        <div class="card feature-card card-hover">
+          <div class="icon-tile"><span class="material-symbols-outlined">reviews</span></div>
+          <h3 class="title">Ulasan &amp; Rating Internal</h3>
+          <p>Baca pengalaman jujur kakak tingkat — hanya bisa diakses oleh mahasiswa terdaftar.</p>
+        </div>
+        <div class="card feature-card card-hover">
+          <div class="icon-tile"><span class="material-symbols-outlined">event_available</span></div>
+          <h3 class="title">Validasi Waktu Otomatis</h3>
+          <p>Formulir ulasan terbuka otomatis setelah tanggal selesai magang Anda terlewati.</p>
+        </div>
+        <div class="card feature-card card-hover">
+          <div class="icon-tile"><span class="material-symbols-outlined">gavel</span></div>
+          <h3 class="title">Moderasi Transparan</h3>
+          <p>Lacak status ulasan Anda: Pending, Disetujui, atau Ditolak beserta catatan admin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== HOW IT WORKS =============== -->
+  <section class="section" id="alur">
+    <div class="container">
+      <div class="section-head">
+        <span class="overline">How It Works</span>
+        <h2 class="h1">Empat langkah sederhana</h2>
+        <p>Dari membuat akun hingga berbagi pengalaman magang Anda.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><h3>Buat Akun</h3><p>Daftar menggunakan NIM dan email kampus, lalu verifikasi akun Anda.</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Jelajahi Katalog</h3><p>Gunakan filter untuk menemukan lowongan yang sesuai prodi dan keahlian.</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Simpan &amp; Pelajari</h3><p>Bookmark lowongan, cek detail kuota, IPK, dan baca ulasan internal.</p></div>
+        <div class="step"><div class="step-num">4</div><h3>Beri Ulasan</h3><p>Setelah magang selesai, bagikan rating &amp; feedback untuk adik tingkat.</p></div>
+      </div>
+
+      <div class="grid grid-2 mt-2xl">
+        <div class="card role-card">
+          <div class="flex items-center gap-md"><div class="icon-tile"><span class="material-symbols-outlined">person</span></div><div><div class="h3">Untuk Mahasiswa</div><div class="caption">Login dengan akun NIM</div></div></div>
+          <ul>
+            <li><span class="material-symbols-outlined">check_circle</span>Lihat detail lowongan eksklusif (kuota, IPK, kontak)</li>
+            <li><span class="material-symbols-outlined">check_circle</span>Simpan lowongan ke koleksi favorit</li>
+            <li><span class="material-symbols-outlined">check_circle</span>Baca &amp; tulis ulasan tempat magang</li>
+          </ul>
+        </div>
+        <div class="card role-card">
+          <div class="flex items-center gap-md"><div class="icon-tile"><span class="material-symbols-outlined">admin_panel_settings</span></div><div><div class="h3">Untuk Admin Jurusan</div><div class="caption">Akun dikelola jurusan</div></div></div>
+          <ul>
+            <li><span class="material-symbols-outlined">check_circle</span>Kelola data perusahaan &amp; lowongan (CRUD)</li>
+            <li><span class="material-symbols-outlined">check_circle</span>Atur akun dan penempatan magang mahasiswa</li>
+            <li><span class="material-symbols-outlined">check_circle</span>Moderasi ulasan sebelum dipublikasikan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FAQ =============== -->
+  <section class="section bg-white" id="faq" style="border-top:1px solid var(--border)">
+    <div class="container" style="max-width:820px">
+      <div class="section-head">
+        <span class="overline">FAQ</span>
+        <h2 class="h1">Pertanyaan yang sering diajukan</h2>
+      </div>
+      <div class="accordion" data-accordion="single">
+        <div class="accordion-item open">
+          <button class="accordion-trigger">Siapa saja yang dapat menggunakan SIMAG-JKB?<span class="material-symbols-outlined">expand_more</span></button>
+          <div class="accordion-content">Pengunjung umum dapat melihat katalog dasar (perusahaan, posisi, lokasi). Fitur lengkap seperti detail lowongan, favorit, dan ulasan hanya tersedia bagi mahasiswa aktif Jurusan Komputer &amp; Bisnis yang memiliki akun.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Bagaimana cara mendaftar akun?<span class="material-symbols-outlined">expand_more</span></button>
+          <div class="accordion-content">Klik tombol <strong>Daftar Akun</strong>, isi NIM, nama lengkap, program studi, dan email kampus. Akun akan aktif setelah diverifikasi oleh Admin Jurusan.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Kapan saya bisa menulis ulasan?<span class="material-symbols-outlined">expand_more</span></button>
+          <div class="accordion-content">Formulir ulasan terbuka otomatis setelah tanggal hari ini melewati <strong>tanggal selesai magang</strong> Anda yang tercatat oleh Admin Jurusan pada data penempatan.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Apakah ulasan saya langsung tampil?<span class="material-symbols-outlined">expand_more</span></button>
+          <div class="accordion-content">Tidak. Setiap ulasan melalui moderasi Admin Jurusan terlebih dahulu. Anda dapat memantau statusnya (Pending / Disetujui / Ditolak) di menu <em>Ulasan Saya</em>.</div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger">Apakah SIMAG-JKB menerima pendaftaran magang secara langsung?<span class="material-symbols-outlined">expand_more</span></button>
+          <div class="accordion-content">SIMAG-JKB berfungsi sebagai pusat informasi. Proses lamaran tetap dilakukan melalui kontak perusahaan yang tercantum pada halaman detail lowongan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== CTA =============== -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="cta">
+        <div style="position:relative;z-index:1">
+          <h2 class="h1 text-white">Siap mencari tempat magang?</h2>
+          <p>Buat akun sekarang dan akses seluruh detail lowongan serta ulasan internal.</p>
+        </div>
+        <div class="flex gap-sm flex-wrap" style="position:relative;z-index:1">
+          <a href="register.html" class="btn btn-white btn-lg">Daftar Sekarang</a>
+          <a href="katalog.html" class="btn btn-outline-white btn-lg">Lihat Katalog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="brand">
+            <span class="brand-mark"><span class="material-symbols-outlined">school</span></span>
+            <span class="brand-text"><strong>SIMAG-JKB</strong><small>Jurusan Komputer &amp; Bisnis</small></span>
+          </a>
+          <p class="mt-md" style="max-width:320px">Sistem Informasi Magang resmi Jurusan Komputer &amp; Bisnis untuk informasi lowongan dan ulasan magang mahasiswa.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="katalog.html">Katalog Lowongan</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Akun</h4>
+          <ul>
+            <li><a href="login.html">Masuk</a></li>
+            <li><a href="register.html">Daftar</a></li>
+            <li><a href="style-guide.html">Style Guide (Dev)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Kontak Jurusan</h4>
+          <ul>
+            <li><span class="material-symbols-outlined">location_on</span>Gedung Jurusan Komputer &amp; Bisnis, Lt. 2</li>
+            <li><span class="material-symbols-outlined">mail</span>simag.jkb@kampus.ac.id</li>
+            <li><span class="material-symbols-outlined">schedule</span>Senin–Jumat, 08.00–16.00 WIB</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SIMAG-JKB · Jurusan Komputer &amp; Bisnis. Hak cipta dilindungi.</span>
+        <span>Mockup Tahap 2 · v1.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

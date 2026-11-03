@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Dashboard Admin — SIMAG-JKB</title>
+  <!-- Google Fonts: Inter & Material Symbols Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" rel="stylesheet">
+  <!-- Stylesheet Utama (Shared Native CSS) -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* CSS spesifik modul admin (opsional) */
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ========================================================
+       SIDEBAR ADMIN (MASTER NAVIGATION ADMIN)
+       Tips: Tambahkan class 'active' pada link halaman yang aktif!
+       ======================================================== -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <a href="dashboard.html" class="brand">
+        <span class="brand-mark"><span class="material-symbols-outlined">admin_panel_settings</span></span>
+        <span class="brand-text"><strong>SIMAG-JKB</strong><small>Panel Admin Jurusan</small></span>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Utama</div>
+      <a href="dashboard.html" class="sidebar-link active"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+      <div class="sidebar-section">Data Master</div>
+      <a href="katalog.html" class="sidebar-link"><span class="material-symbols-outlined">work</span>Manajemen Katalog</a>
+      <a href="pengguna.html" class="sidebar-link"><span class="material-symbols-outlined">group</span>Manajemen Pengguna</a>
+      <div class="sidebar-section">Moderasi</div>
+      <a href="moderasi.html" class="sidebar-link"><span class="material-symbols-outlined">gavel</span>Moderasi Ulasan<span class="count">12</span></a>
+      <div class="sidebar-section">Sistem</div>
+      <a href="../login.html" class="sidebar-link"><span class="material-symbols-outlined">logout</span>Keluar</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <span class="avatar">SR</span>
+        <div class="info"><strong>Siti Rahmawati, M.Kom</strong><small>Admin Jurusan</small></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       MAIN WRAPPER (TOPBAR & CONTENT ADMIN)
+       ======================================================== -->
+  <div class="app-main">
+    <!-- TOPBAR ADMIN -->
+    <header class="topbar">
+      <div class="flex items-center gap-sm flex-1">
+        <button class="icon-btn menu-btn" data-sidebar-toggle aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+        <div class="input-icon topbar-search">
+          <span class="material-symbols-outlined">search</span>
+          <input class="form-control" type="search" placeholder="Cari data master jurusan…">
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" aria-label="Notifikasi"><span class="material-symbols-outlined">notifications</span><span class="dot"></span></button>
+        <span class="avatar">SR</span>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA (SLOT AREA KERJA ANGGOTA ADMIN) -->
+    <main class="app-content">
+      <!-- Breadcrumb Navigasi -->
+      <nav class="breadcrumb">
+        <a href="dashboard.html">Admin Panel</a>
+        <span class="material-symbols-outlined">chevron_right</span>
+        <span>Nama Modul Admin</span>
+      </nav>
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="h1">Judul Modul Admin</h1>
+          <p>Tuliskan deskripsi ringkas apa fungsi fitur admin ini.</p>
+        </div>
+        <div class="flex gap-sm">
+          <!-- Tombol Aksi Admin (Export, Tambah Data, dll) -->
+          <button class="btn btn-secondary"><span class="material-symbols-outlined">download</span>Ekspor Data</button>
+          <button class="btn btn-primary"><span class="material-symbols-outlined">add</span>Tambah Data</button>
+        </div>
+      </div>
+
+      <!-- KONTEN KOSONG (MULAI CODING DI SINI) -->
+      <!-- ========================================================
+           AREA KERJA ANGGOTA:
+           Ganti kartu di bawah dengan tabel kendali, form CRUD,
+           atau modul analitik tugas Anda!
+           ======================================================== -->
+      <div class="card p-xl text-center">
+        <div class="empty-state">
+          <div class="icon-wrap">
+            <span class="material-symbols-outlined">admin_panel_settings</span>
+          </div>
+          <h2 class="h2 mb-xs">Slot Konten Modul Admin</h2>
+          <p class="body text-muted mb-lg" style="max-width:540px;margin-left:auto;margin-right:auto">
+            Halaman ini sudah terintegrasi dengan Sidebar Admin dan Topbar. Anggota yang bertugas tinggal menyusun layout tabel kendali, badge status, modal form, atau filter data di dalam <code>&lt;main class="app-content"&gt;</code>.
+          </p>
+        </div>
+      </div>
+      <!-- AKHIR KONTEN KOSONG -->
+
+    </main>
+  </div>
+</div>
+
+<!-- JavaScript Interaksi Bersama -->
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
