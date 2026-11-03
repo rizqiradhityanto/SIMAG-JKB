@@ -14,6 +14,9 @@
    .star-input               : input rating 1–5 (data-target="#idInputHidden")
    .segmented                : grup tombol pilihan tunggal
    .chip button              : hapus chip filter
+   .reveal                   : animasi muncul saat di-scroll (opsional: [data-reveal-group])
+   [data-count]              : animasi hitung naik angka statistik (opsional: [data-suffix])
+   [data-typewriter]         : animasi ketik placeholder (pisahkan kata dengan "|")
    ===================================================================== */
 
 (function () {
@@ -175,4 +178,138 @@
     ta.addEventListener('input', update);
     update();
   });
+
+  /* ---------- Scroll Reveal (.reveal & [data-reveal-group]) ---------- */
+  document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
+    group.querySelectorAll(':scope > .reveal').forEach(function (item, idx) {
+      item.style.setProperty('--reveal-delay', (idx * 0.09).toFixed(2) + 's');
+    });
+  });
+
+  const revealItems = document.querySelectorAll('.reveal');
+  if (revealItems.length) {
+    if ('IntersectionObserver' in window) {
+      const revealObs = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+
+      revealItems.forEach(function (el) { revealObs.observe(el); });
+    } else {
+      revealItems.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  }
+
+  /* ---------- Count-up angka statistik ([data-count]) ---------- */
+  const countItems = document.querySelectorAll('[data-count]');
+  if (countItems.length) {
+    const numFormat = new Intl.NumberFormat('id-ID');
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function animateCount(el) {
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      if (isNaN(target) || prefersReduced) {
+        el.textContent = numFormat.format(target) + suffix;
+        return;
+      }
+
+      const duration = 1400;
+      const startTime = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4); /* easeOutQuart */
+        const current = Math.round(eased * target);
+        el.textContent = numFormat.format(current) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const countObs = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      countItems.forEach(function (el) { countObs.observe(el); });
+    } else {
+      countItems.forEach(animateCount);
+    }
+  }
+
+  /* ---------- Typewriter placeholder ([data-typewriter]) ---------- */
+  const twInputs = document.querySelectorAll('input[data-typewriter]');
+  if (twInputs.length) {
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced) {
+      twInputs.forEach(function (input, inputIdx) {
+        const words = (input.dataset.typewriter || '').split('|').map(function (w) { return w.trim(); }).filter(Boolean);
+        if (!words.length) return;
+
+        const prefix = input.dataset.typewriterPrefix || '';
+        const defaultPlaceholder = input.getAttribute('placeholder') || (prefix + words[0]);
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
+        let timerId = null;
+
+        function step() {
+          if (isPaused) return;
+          const currentWord = words[wordIndex];
+
+          if (!isDeleting) {
+            charIndex++;
+            input.setAttribute('placeholder', prefix + currentWord.slice(0, charIndex) + '|');
+            if (charIndex >= currentWord.length) {
+              isDeleting = true;
+              timerId = setTimeout(step, 1800);
+              return;
+            }
+            timerId = setTimeout(step, 75);
+          } else {
+            charIndex--;
+            input.setAttribute('placeholder', prefix + currentWord.slice(0, charIndex) + (charIndex > 0 ? '|' : ''));
+            if (charIndex <= 0) {
+              isDeleting = false;
+              wordIndex = (wordIndex + 1) % words.length;
+              timerId = setTimeout(step, 320);
+              return;
+            }
+            timerId = setTimeout(step, 40);
+          }
+        }
+
+        input.addEventListener('focus', function () {
+          isPaused = true;
+          clearTimeout(timerId);
+          input.setAttribute('placeholder', prefix + words[wordIndex]);
+        });
+
+        input.addEventListener('blur', function () {
+          if (!input.value.trim()) {
+            isPaused = false;
+            timerId = setTimeout(step, 500);
+          } else {
+            input.setAttribute('placeholder', defaultPlaceholder);
+          }
+        });
+
+        /* Mulai setelah animasi entrance Hero selesai */
+        timerId = setTimeout(step, 850 + inputIdx * 220);
+      });
+    }
+  }
 })();
