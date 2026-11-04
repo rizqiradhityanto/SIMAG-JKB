@@ -223,6 +223,7 @@
         opacity: 0;
         transform: translateY(22px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -234,6 +235,7 @@
         opacity: 0;
         transform: translateY(28px) scale(.96);
       }
+
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -241,27 +243,36 @@
     }
 
     @keyframes heroFloatMain {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-9px);
       }
     }
 
     @keyframes heroFloatOffset {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-11px);
       }
     }
 
     @keyframes heroFloatStat {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-7px);
       }
@@ -271,9 +282,11 @@
       0% {
         box-shadow: 0 0 0 0 rgba(110, 231, 183, .7);
       }
+
       70% {
         box-shadow: 0 0 0 8px rgba(110, 231, 183, 0);
       }
+
       100% {
         box-shadow: 0 0 0 0 rgba(110, 231, 183, 0);
       }
@@ -284,6 +297,7 @@
         transform: translate(0, 0) scale(1);
         opacity: .75;
       }
+
       100% {
         transform: translate(-24px, 18px) scale(1.12);
         opacity: 1;
@@ -294,6 +308,7 @@
       0% {
         background-position: 0 0;
       }
+
       100% {
         background-position: 48px 48px;
       }
@@ -313,6 +328,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       .hero::before,
       .hero::after,
       .hero-badge,
@@ -580,8 +596,7 @@
           <div class="input-icon">
             <span class="material-symbols-outlined">location_on</span>
             <input class="form-control" type="text" name="kota" placeholder="Kota, mis. Cilacap"
-              data-typewriter-prefix="Kota, mis. "
-              data-typewriter="Cilacap|Bandung|Jakarta|Yogyakarta|Surabaya">
+              data-typewriter-prefix="Kota, mis. " data-typewriter="Cilacap|Bandung|Jakarta|Yogyakarta|Surabaya">
           </div>
           <button class="btn btn-primary btn-lg" type="submit">Cari Lowongan</button>
         </form>
@@ -614,7 +629,7 @@
           <div class="flex items-center justify-between mb-sm">
             <div class="flex items-center gap-sm">
               <span class="avatar sm soft">NA</span>
-              <span class="label">Nadia A. · D4 SIB</span>
+              <span class="label">Nirvana Antika Maharani · D4 TRPL</span>
             </div>
             <div class="stars"><span class="material-symbols-outlined">star</span><span
                 class="material-symbols-outlined">star</span><span class="material-symbols-outlined">star</span><span
@@ -692,7 +707,8 @@
           <div class="title mt-sm">Ulasan Tervalidasi</div>
           <p class="body text-muted mt-xs">Hanya mahasiswa yang benar-benar selesai magang yang dapat mengulas.</p>
         </div>
-        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary" style="font-size:28px">tune</span>
+        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
+            style="font-size:28px">tune</span>
           <div class="title mt-sm">Filter Relevan</div>
           <p class="body text-muted mt-xs">Cari berdasarkan program studi, keahlian, kategori, hingga kota.</p>
         </div>
@@ -894,6 +910,7 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="katalog.html">Katalog Lowongan</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="disclaimer.html">Disclaimer &amp; Tim</a></li>
           </ul>
         </div>
         <div>
@@ -901,13 +918,14 @@
           <ul>
             <li><a href="login.html">Masuk</a></li>
             <li><a href="register.html">Daftar</a></li>
-            <li><a href="style-guide.html">Style Guide (Dev)</a></li>
+            <!-- <li><a href="style-guide.html">Style Guide (Dev)</a></li> -->
           </ul>
         </div>
         <div>
           <h4>Kontak Jurusan</h4>
           <ul>
-            <li><span class="material-symbols-outlined">location_on</span>Gedung Jurusan Komputer &amp; Bisnis, Lt. 2
+            <li><span class="material-symbols-outlined">location_on</span>Gedung Teknik Informatika &amp; Lingkungan
+              (GTIL), Lt. 3
             </li>
             <li><span class="material-symbols-outlined">mail</span>simag.jkb@kampus.ac.id</li>
             <li><span class="material-symbols-outlined">schedule</span>Senin–Jumat, 08.00–16.00 WIB</li>
@@ -915,8 +933,8 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 SIMAG-JKB · Kelompok 2. Hak cipta dilindungi.</span>
-        <span>Mockup Tahap 2 · v1.0</span>
+        <span>© 2026 SIMAG-JKB · Hak cipta dilindungi.</span>
+        <a href="disclaimer.html">Kelompok 2 · Disclaimer &amp; Tim Penyusun</a>
       </div>
     </div>
   </footer>
