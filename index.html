@@ -408,6 +408,77 @@
       font-size: 15px;
     }
 
+    /* ---- Refined Custom Duotone SVG Icons (Anti-AI Slop) ---- */
+    .icon-tile {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #FFFFFF 0%, #EFF6FF 100%);
+      border: 1px solid #DBEAFE;
+      box-shadow: 0 2px 6px rgba(30, 58, 138, .06), inset 0 1px 0 rgba(255, 255, 255, .9);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .icon-tile.sm {
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+    }
+
+    .card-hover:hover .icon-tile,
+    .stats-strip .item:hover .icon-tile,
+    .role-card:hover .icon-tile {
+      border-color: #93C5FD;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, .12), inset 0 1px 0 #FFFFFF;
+      transform: translateY(-1px);
+    }
+
+    .icon-svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+      overflow: visible;
+    }
+
+    .icon-tile.sm .icon-svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .icon-svg .duo-fill {
+      fill: var(--secondary);
+      fill-opacity: 0.14;
+      stroke: none;
+    }
+
+    .icon-svg .duo-stroke {
+      stroke: var(--primary);
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .icon-svg .duo-accent {
+      stroke: var(--secondary);
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .check-svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -639,7 +710,12 @@
             direkomendasikan!"</p>
         </div>
         <div class="hero-mini-stat">
-          <div class="icon-tile" style="width:40px;height:40px"><span class="material-symbols-outlined">reviews</span>
+          <div class="icon-tile sm">
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="duo-fill" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" />
+              <path class="duo-stroke" d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4 3.5V16H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" />
+              <path class="duo-accent" d="m12 6.2 1.15 2.33 2.57.37-1.86 1.81.44 2.56L12 12.06l-2.3 1.21.44-2.56-1.86-1.81 2.57-.37L12 6.2Z" />
+            </svg>
           </div>
           <div>
             <div class="title">4.6 / 5</div>
@@ -654,28 +730,61 @@
   <div class="container stats-strip">
     <div class="card reveal">
       <div class="item">
-        <div class="icon-tile"><span class="material-symbols-outlined">apartment</span></div>
+        <div class="icon-tile">
+          <!-- Mitra Perusahaan: Gedung korporat arsitektural bertingkat -->
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="duo-fill" x="4" y="3.5" width="10" height="17.5" rx="1.5" />
+            <path class="duo-stroke" d="M2.5 21h19M4 21V5a1.5 1.5 0 0 1 1.5-1.5h7A1.5 1.5 0 0 1 14 5v16M14 9.5h4.5A1.5 1.5 0 0 1 20 11v10" />
+            <path class="duo-accent" d="M7 7.5h4M7 11h4M7 14.5h4M16.5 13h1M16.5 16h1M9 21v-3" />
+          </svg>
+        </div>
         <div>
           <div class="num" data-count="86">86</div>
           <div class="caption">Mitra Perusahaan</div>
         </div>
       </div>
       <div class="item">
-        <div class="icon-tile"><span class="material-symbols-outlined">work</span></div>
+        <div class="icon-tile">
+          <!-- Lowongan Aktif: Tas kerja profesional dengan detail lencana posisi -->
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <rect class="duo-fill" x="3" y="7.5" width="18" height="12.5" rx="2.5" />
+            <path class="duo-stroke" d="M8.5 7.5V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5v2" />
+            <rect class="duo-stroke" x="3" y="7.5" width="18" height="12.5" rx="2.5" />
+            <path class="duo-accent" d="M3.5 12.5a17.5 17.5 0 0 0 17 0M12 11.5v3" />
+          </svg>
+        </div>
         <div>
           <div class="num" data-count="124">124</div>
           <div class="caption">Lowongan Aktif</div>
         </div>
       </div>
       <div class="item">
-        <div class="icon-tile"><span class="material-symbols-outlined">groups</span></div>
+        <div class="icon-tile">
+          <!-- Mahasiswa Terdaftar: Komunitas mahasiswa terhubung -->
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <circle class="duo-fill" cx="9" cy="8" r="3.5" />
+            <path class="duo-fill" d="M3 19.5c0-3 2.7-5 6-5s6 2 6 5H3Z" />
+            <circle class="duo-stroke" cx="9" cy="8" r="3.5" />
+            <path class="duo-stroke" d="M3 19.5c0-2.9 2.7-5 6-5s6 2.1 6 5" />
+            <path class="duo-accent" d="M15.5 5.2a3.2 3.2 0 0 1 0 5.6M17.5 14.8c2 .6 3.5 2.2 3.5 4.7" />
+          </svg>
+        </div>
         <div>
           <div class="num" data-count="1250" data-suffix="+">1.250+</div>
           <div class="caption">Mahasiswa Terdaftar</div>
         </div>
       </div>
       <div class="item">
-        <div class="icon-tile"><span class="material-symbols-outlined">rate_review</span></div>
+        <div class="icon-tile">
+          <!-- Ulasan Terverifikasi: Dokumen ulasan dengan lencana centang verifikasi -->
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path class="duo-fill" d="M4.5 5.5A2 2 0 0 1 6.5 3.5h9a2 2 0 0 1 2 2v6.2a5.5 5.5 0 0 0-5.8 7.8H6.5a2 2 0 0 1-2-2v-12Z" />
+            <path class="duo-stroke" d="M11 19.5H6.5a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v5" />
+            <path class="duo-stroke" d="M8 8h6M8 11.5h4" />
+            <circle class="duo-accent" cx="16.5" cy="16.5" r="4" />
+            <path class="duo-accent" d="m14.8 16.5 1.2 1.2 2.3-2.4" />
+          </svg>
+        </div>
         <div>
           <div class="num" data-count="640">640</div>
           <div class="caption">Ulasan Terverifikasi</div>
@@ -697,24 +806,58 @@
           — berdasarkan data, bukan sekadar tebakan.</p>
       </div>
       <div class="grid grid-2" data-reveal-group>
-        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
-            style="font-size:28px">account_balance</span>
-          <div class="title mt-sm">Dikelola Jurusan</div>
+        <div class="card card-hover p-lg reveal">
+          <div class="icon-tile sm">
+            <!-- Dikelola Jurusan: Pilar institusi akademik -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="duo-fill" d="M12 3 3.5 8h17L12 3Z" />
+              <path class="duo-stroke" d="M12 3 3.5 8h17L12 3ZM3.5 20h17" />
+              <path class="duo-accent" d="M6.5 8v9M10.2 8v9M13.8 8v9M17.5 8v9M5 17h14" />
+            </svg>
+          </div>
+          <div class="title mt-md">Dikelola Jurusan</div>
           <p class="body text-muted mt-xs">Data mitra &amp; lowongan diinput dan divalidasi oleh Admin Jurusan.</p>
         </div>
-        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
-            style="font-size:28px">fact_check</span>
-          <div class="title mt-sm">Ulasan Tervalidasi</div>
+        <div class="card card-hover p-lg reveal">
+          <div class="icon-tile sm">
+            <!-- Ulasan Tervalidasi: Papan klip verifikasi akademik -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="duo-fill" x="5" y="4.5" width="14" height="16.5" rx="2" />
+              <path class="duo-stroke" d="M9 4.5h6v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-2Z" />
+              <path class="duo-stroke" d="M9 4.5H7a2 2 0 0 0-2 2v12.5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6.5a2 2 0 0 0-2-2h-2" />
+              <path class="duo-accent" d="m9 13.5 2 2 4-4.2M9 17.5h6" />
+            </svg>
+          </div>
+          <div class="title mt-md">Ulasan Tervalidasi</div>
           <p class="body text-muted mt-xs">Hanya mahasiswa yang benar-benar selesai magang yang dapat mengulas.</p>
         </div>
-        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
-            style="font-size:28px">tune</span>
-          <div class="title mt-sm">Filter Relevan</div>
+        <div class="card card-hover p-lg reveal">
+          <div class="icon-tile sm">
+            <!-- Filter Relevan: Kontrol parameter presisi -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <circle class="duo-fill" cx="9" cy="7" r="2.5" />
+              <circle class="duo-fill" cx="15" cy="12" r="2.5" />
+              <circle class="duo-fill" cx="10" cy="17" r="2.5" />
+              <path class="duo-stroke" d="M4 7h2.5M11.5 7H20M4 12h8.5M17.5 12H20M4 17h3.5M12.5 17H20" />
+              <circle class="duo-accent" cx="9" cy="7" r="2.2" />
+              <circle class="duo-accent" cx="15" cy="12" r="2.2" />
+              <circle class="duo-accent" cx="10" cy="17" r="2.2" />
+            </svg>
+          </div>
+          <div class="title mt-md">Filter Relevan</div>
           <p class="body text-muted mt-xs">Cari berdasarkan program studi, keahlian, kategori, hingga kota.</p>
         </div>
-        <div class="card card-hover p-lg reveal"><span class="material-symbols-outlined text-secondary"
-            style="font-size:28px">devices</span>
-          <div class="title mt-sm">Akses Di Mana Saja</div>
+        <div class="card card-hover p-lg reveal">
+          <div class="icon-tile sm">
+            <!-- Akses Di Mana Saja: Multi-perangkat laptop & ponsel -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="duo-fill" x="3.5" y="5" width="13.5" height="9.5" rx="1.5" />
+              <path class="duo-stroke" d="M14 14.5H5A1.5 1.5 0 0 1 3.5 13V6.5A1.5 1.5 0 0 1 5 5h10.5A1.5 1.5 0 0 1 17 6.5V9M2 17.5h12" />
+              <rect class="duo-accent" x="15.5" y="10" width="5.5" height="9.5" rx="1.2" />
+              <path class="duo-accent" d="M18 17.2h.5" />
+            </svg>
+          </div>
+          <div class="title mt-md">Akses Di Mana Saja</div>
           <p class="body text-muted mt-xs">Tampilan responsif untuk laptop maupun ponsel.</p>
         </div>
       </div>
@@ -732,32 +875,83 @@
       </div>
       <div class="grid grid-3" data-reveal-group>
         <div class="card feature-card card-hover reveal">
-          <div class="icon-tile"><span class="material-symbols-outlined">travel_explore</span></div>
+          <div class="icon-tile">
+            <!-- Katalog Lowongan Terpusat: Direktori grid 2x2 dengan lup eksplorasi -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="duo-fill" x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+              <rect class="duo-fill" x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+              <rect class="duo-stroke" x="3.5" y="3.5" width="7" height="7" rx="1.5" />
+              <rect class="duo-stroke" x="13.5" y="3.5" width="7" height="7" rx="1.5" />
+              <rect class="duo-stroke" x="3.5" y="13.5" width="7" height="7" rx="1.5" />
+              <circle class="duo-accent" cx="16.5" cy="16.5" r="3.2" />
+              <path class="duo-accent" d="m19 19 2.2 2.2" />
+            </svg>
+          </div>
           <h3 class="title">Katalog Lowongan Terpusat</h3>
           <p>Seluruh lowongan dari mitra resmi jurusan dalam satu etalase, lengkap dengan kuota dan persyaratan.</p>
         </div>
         <div class="card feature-card card-hover reveal">
-          <div class="icon-tile"><span class="material-symbols-outlined">filter_alt</span></div>
+          <div class="icon-tile">
+            <!-- Filter Multi-Parameter: Matriks penyaringan berlapis -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <rect class="duo-fill" x="3.5" y="4" width="17" height="4" rx="2" />
+              <rect class="duo-fill" x="3.5" y="10" width="12" height="4" rx="2" />
+              <rect class="duo-fill" x="3.5" y="16" width="15" height="4" rx="2" />
+              <path class="duo-stroke" d="M4 6h9M17 6h3M4 12h4M12 12h8M4 18h10M18 18h2" />
+              <circle class="duo-accent" cx="15" cy="6" r="2" />
+              <circle class="duo-accent" cx="10" cy="12" r="2" />
+              <circle class="duo-accent" cx="16" cy="18" r="2" />
+            </svg>
+          </div>
           <h3 class="title">Filter Multi-Parameter</h3>
           <p>Saring lowongan berdasarkan program studi, keahlian, kategori industri, dan lokasi secara bersamaan.</p>
         </div>
         <div class="card feature-card card-hover reveal">
-          <div class="icon-tile"><span class="material-symbols-outlined">bookmarks</span></div>
+          <div class="icon-tile">
+            <!-- Koleksi Favorit: Bookmark berlapis ganda dengan tanda simpan -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="duo-fill" d="M5.5 5.5A2 2 0 0 1 7.5 3.5h7a2 2 0 0 1 2 2V20L11 16.5 5.5 20V5.5Z" />
+              <path class="duo-stroke" d="M5.5 5.5A2 2 0 0 1 7.5 3.5h7a2 2 0 0 1 2 2V20L11 16.5 5.5 20V5.5Z" />
+              <path class="duo-accent" d="M9.5 3.5h8a2 2 0 0 1 2 2V17M9.2 9.5h3.6M11 7.7v3.6" />
+            </svg>
+          </div>
           <h3 class="title">Koleksi Favorit</h3>
           <p>Simpan lowongan incaran dan bandingkan nanti tanpa perlu mencari ulang.</p>
         </div>
         <div class="card feature-card card-hover reveal">
-          <div class="icon-tile"><span class="material-symbols-outlined">reviews</span></div>
+          <div class="icon-tile">
+            <!-- Ulasan & Rating Internal: Kartu ulasan mahasiswa & bintang penilaian -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="duo-fill" d="M3.5 6A2.5 2.5 0 0 1 6 3.5h12A2.5 2.5 0 0 1 20.5 6v8.5A2.5 2.5 0 0 1 18 17H9.5l-4 3.5V17H6a2.5 2.5 0 0 1-2.5-2.5V6Z" />
+              <path class="duo-stroke" d="M3.5 6A2.5 2.5 0 0 1 6 3.5h12A2.5 2.5 0 0 1 20.5 6v8.5A2.5 2.5 0 0 1 18 17H9.5l-4 3.5V17H6a2.5 2.5 0 0 1-2.5-2.5V6Z" />
+              <path class="duo-accent" d="m12 6.8.95 1.92 2.12.31-1.53 1.5.36 2.11L12 11.64l-1.9 1 .36-2.11-1.53-1.5 2.12-.31L12 6.8Z" />
+            </svg>
+          </div>
           <h3 class="title">Ulasan &amp; Rating Internal</h3>
           <p>Baca pengalaman jujur kakak tingkat — hanya bisa diakses oleh mahasiswa terdaftar.</p>
         </div>
         <div class="card feature-card card-hover reveal">
-          <div class="icon-tile"><span class="material-symbols-outlined">event_available</span></div>
+          <div class="icon-tile">
+            <!-- Validasi Waktu Otomatis: Kalender periode magang dengan indikator waktu otomatis -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="duo-fill" d="M3.5 8.5h16v8a3 3 0 0 1-3 3h-10a3 3 0 0 1-3-3v-8Z" />
+              <path class="duo-stroke" d="M7.5 3v3M15.5 3v3M3.5 8.5h15.5M11 19.5H6.5a3 3 0 0 1-3-3v-9a2.5 2.5 0 0 1 2.5-2.5h11a2.5 2.5 0 0 1 2.5 2.5v3.5" />
+              <circle class="duo-accent" cx="17" cy="16.5" r="4" />
+              <path class="duo-accent" d="M17 14.7v1.9l1.3.9" />
+            </svg>
+          </div>
           <h3 class="title">Validasi Waktu Otomatis</h3>
           <p>Formulir ulasan terbuka otomatis setelah tanggal selesai magang Anda terlewati.</p>
         </div>
         <div class="card feature-card card-hover reveal">
-          <div class="icon-tile"><span class="material-symbols-outlined">gavel</span></div>
+          <div class="icon-tile">
+            <!-- Moderasi Transparan: Perisai audit & pemeriksaan status ulasan -->
+            <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="duo-fill" d="M12 3.2 5 6.2v5.3c0 4.8 3 8.3 7 9.8 4-1.5 7-5 7-9.8V6.2l-7-3Z" />
+              <path class="duo-stroke" d="M12 3.2 5 6.2v5.3c0 4.8 3 8.3 7 9.8 4-1.5 7-5 7-9.8V6.2l-7-3Z" />
+              <path class="duo-accent" d="m9.2 12.2 2 2 3.8-3.8" />
+            </svg>
+          </div>
           <h3 class="title">Moderasi Transparan</h3>
           <p>Lacak status ulasan Anda: Pending, Disetujui, atau Ditolak beserta catatan admin.</p>
         </div>
@@ -799,33 +993,81 @@
       <div class="grid grid-2 mt-2xl" data-reveal-group>
         <div class="card role-card reveal">
           <div class="flex items-center gap-md">
-            <div class="icon-tile"><span class="material-symbols-outlined">person</span></div>
+            <div class="icon-tile">
+              <!-- Untuk Mahasiswa: Kartu profil mahasiswa & toga akademik -->
+              <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="duo-fill" d="M12 4 3.5 8.2 12 12.4l8.5-4.2L12 4Z" />
+                <path class="duo-stroke" d="M12 4 3.5 8.2 12 12.4l8.5-4.2L12 4Z" />
+                <path class="duo-stroke" d="M6.5 10.2v4.6c0 1.8 2.5 3.4 5.5 3.4s5.5-1.6 5.5-3.4v-4.6" />
+                <path class="duo-accent" d="M20.5 8.4v5.6" />
+              </svg>
+            </div>
             <div>
               <div class="h3">Untuk Mahasiswa</div>
               <div class="caption">Login dengan akun NIM</div>
             </div>
           </div>
           <ul>
-            <li><span class="material-symbols-outlined">check_circle</span>Lihat detail lowongan eksklusif (kuota, IPK,
-              kontak)</li>
-            <li><span class="material-symbols-outlined">check_circle</span>Simpan lowongan ke koleksi favorit</li>
-            <li><span class="material-symbols-outlined">check_circle</span>Baca &amp; tulis ulasan tempat magang</li>
+            <li>
+              <svg class="check-svg" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" />
+                <path d="m6.8 10.2 2.1 2.1 4.3-4.4" fill="none" stroke="#047857" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Lihat detail lowongan eksklusif (kuota, IPK, kontak)
+            </li>
+            <li>
+              <svg class="check-svg" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" />
+                <path d="m6.8 10.2 2.1 2.1 4.3-4.4" fill="none" stroke="#047857" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Simpan lowongan ke koleksi favorit
+            </li>
+            <li>
+              <svg class="check-svg" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" />
+                <path d="m6.8 10.2 2.1 2.1 4.3-4.4" fill="none" stroke="#047857" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Baca &amp; tulis ulasan tempat magang
+            </li>
           </ul>
         </div>
         <div class="card role-card reveal">
           <div class="flex items-center gap-md">
-            <div class="icon-tile"><span class="material-symbols-outlined">admin_panel_settings</span></div>
+            <div class="icon-tile">
+              <!-- Untuk Admin Jurusan: Panel kendali & otorisasi jurusan -->
+              <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+                <rect class="duo-fill" x="3.5" y="4" width="17" height="16" rx="2.5" />
+                <path class="duo-stroke" d="M3.5 8.5h17M6 4h12a2.5 2.5 0 0 1 2.5 2.5v11A2.5 2.5 0 0 1 18 20H6a2.5 2.5 0 0 1-2.5-2.5v-11A2.5 2.5 0 0 1 6 4Z" />
+                <path class="duo-accent" d="M7.5 13h4M7.5 16h2.5M15.5 11.8l2.5 1.1v2c0 1.6-1.1 2.7-2.5 3.3-1.4-.6-2.5-1.7-2.5-3.3v-2l2.5-1.1Z" />
+              </svg>
+            </div>
             <div>
               <div class="h3">Untuk Admin Jurusan</div>
               <div class="caption">Akun dikelola jurusan</div>
             </div>
           </div>
           <ul>
-            <li><span class="material-symbols-outlined">check_circle</span>Kelola data perusahaan &amp; lowongan (CRUD)
+            <li>
+              <svg class="check-svg" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" />
+                <path d="m6.8 10.2 2.1 2.1 4.3-4.4" fill="none" stroke="#047857" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Kelola data perusahaan &amp; lowongan (CRUD)
             </li>
-            <li><span class="material-symbols-outlined">check_circle</span>Atur akun dan penempatan magang mahasiswa
+            <li>
+              <svg class="check-svg" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" />
+                <path d="m6.8 10.2 2.1 2.1 4.3-4.4" fill="none" stroke="#047857" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Atur akun dan penempatan magang mahasiswa
             </li>
-            <li><span class="material-symbols-outlined">check_circle</span>Moderasi ulasan sebelum dipublikasikan</li>
+            <li>
+              <svg class="check-svg" viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="10" cy="10" r="8" fill="#ECFDF5" stroke="#10B981" stroke-width="1.5" />
+                <path d="m6.8 10.2 2.1 2.1 4.3-4.4" fill="none" stroke="#047857" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Moderasi ulasan sebelum dipublikasikan
+            </li>
           </ul>
         </div>
       </div>
