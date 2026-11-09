@@ -1,0 +1,65 @@
+/* =====================================================================
+   SIMAG-JKB — Admin Dashboard (CSS khusus modul)
+   Hanya komponen tambahan; selebihnya memakai style.css (token & komponen).
+   ===================================================================== */
+
+.admin-chip { display: inline-flex; align-items: center; gap: var(--space-sm); padding: 6px 12px 6px 6px; background: #fff; border: 1px solid var(--border); border-radius: var(--radius-full); font-size: 13px; }
+.admin-chip small { color: var(--text-muted); }
+
+.stat-card .stat-note { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.stat-card .stat-value-row { display: flex; align-items: baseline; gap: var(--space-sm); }
+
+/* Ringkasan katalog */
+.summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.summary-strip > div { padding: var(--space-md) var(--space-lg); border-right: 1px solid var(--border); }
+.summary-strip > div:last-child { border-right: 0; }
+.summary-strip .num { font-size: 22px; line-height: 30px; font-weight: 700; color: var(--primary); }
+.summary-strip .lbl { font-size: 13px; color: var(--text-muted); }
+
+/* Donut status */
+.donut-wrap { min-height: 100%; display: flex; align-items: center; gap: var(--space-lg); flex-wrap: wrap; justify-content: center; }
+.donut { width: 160px; height: 160px; flex-shrink: 0; }
+.donut text { font-family: var(--font); }
+.legend { list-style: none; display: flex; flex-direction: column; gap: 10px; min-width: 150px; flex: 1; }
+.legend li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.legend .swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.legend .val { margin-left: auto; font-weight: 600; }
+.swatch.s-aktif { background: var(--success); }
+.swatch.s-draft { background: var(--warning); }
+.swatch.s-ditutup { background: var(--border-strong); }
+
+/* Bar kategori */
+.bars { display: flex; flex-direction: column; gap: 14px; }
+.bar-row .bar-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; gap: var(--space-sm); }
+.bar-row .bar-head span:first-child { color: var(--text); }
+.bar-row .bar-head span:last-child { font-weight: 600; }
+.bar-track { height: 8px; background: var(--bg-muted); border-radius: var(--radius-full); overflow: hidden; }
+.bar-fill { height: 100%; background: var(--secondary); border-radius: var(--radius-full); }
+
+/* Quick actions */
+.quick-actions { display: flex; flex-direction: column; gap: var(--space-sm); }
+.quick-actions .btn { justify-content: flex-start; width: 100%; }
+
+/* Aktivitas */
+.activity-list { list-style: none; display: flex; flex-direction: column; }
+.activity-list li { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.activity-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.activity-list li:first-child { padding-top: 0; }
+.activity-list .a-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.activity-list .a-icon .material-symbols-outlined { font-size: 18px; }
+.activity-list .a-text { font-size: 14px; line-height: 20px; }
+.activity-list .a-time { font-size: 12px; color: var(--text-muted); }
+
+.card-title-row { display: flex; align-items: center; gap: var(--space-sm); }
+.card-title-row .material-symbols-outlined { color: var(--secondary); }
+
+@media (max-width: 900px) {
+  .summary-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summary-strip > div:nth-child(2) { border-right: 0; }
+  .summary-strip > div:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+}
+@media (max-width: 480px) {
+  .summary-strip { grid-template-columns: 1fr; }
+  .summary-strip > div { border-right: 0; border-bottom: 1px solid var(--border); }
+  .summary-strip > div:last-child { border-bottom: 0; }
+}
