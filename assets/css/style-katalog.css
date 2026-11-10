@@ -1,0 +1,149 @@
+/* =====================================================================
+   SIMAG-JKB — Styling khusus modul Katalog & Eksplorasi Lowongan
+   PIC: Nirvana Antika Maharani
+   Dimuat SETELAH style.css. Hanya memakai design token dari :root
+   (style.css) dan class baru berawalan khusus katalog; tidak menimpa
+   class global agar halaman lain tidak terpengaruh.
+   ===================================================================== */
+
+/* ---------- Header halaman publik ---------- */
+.page-band { background: #fff; border-bottom: 1px solid var(--border); padding: var(--space-2xl) 0 var(--space-xl); }
+.page-band p { color: var(--text-muted); margin-top: var(--space-sm); font-size: 16px; max-width: 640px; }
+.public-search {
+  margin-top: var(--space-lg); display: grid; gap: var(--space-sm); max-width: 960px;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+}
+.public-search .form-control { height: 48px; }
+.public-search .input-icon { min-width: 0; }
+.link-reset { margin-top: var(--space-sm); }
+
+/* ---------- Grid katalog ---------- */
+.catalog-grid { align-items: stretch; }
+.catalog-grid .grid-span { grid-column: 1 / -1; }
+.catalog-grid.is-list { grid-template-columns: minmax(0, 1fr); }
+.catalog-grid.is-list .job-card { flex-direction: row; align-items: stretch; }
+.catalog-grid.is-list .job-card .card-body { flex: 1; }
+.catalog-grid.is-list .job-card .card-footer {
+  flex-direction: column; justify-content: center; align-items: flex-end; gap: var(--space-sm);
+  border-top: 0; border-left: 1px solid var(--border); min-width: 170px;
+}
+.job-card .job-meta { flex-wrap: wrap; }
+.job-card.is-closed .job-card-title { color: var(--text-muted); }
+.job-card.is-closed { background: #FCFDFE; }
+.job-card .card-footer { gap: var(--space-sm); }
+
+.results-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); margin-bottom: var(--space-md); }
+.results-bar .sort-wrap { display: flex; align-items: center; gap: var(--space-sm); }
+.results-bar .sort-select { width: auto; height: 36px; }
+.pager-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-md); margin-top: var(--space-xl); }
+.pagination a[aria-disabled="true"] { opacity: .4; pointer-events: none; }
+.justify-center { justify-content: center; }
+.block { display: block; }
+
+/* ---------- Search bar katalog mahasiswa ---------- */
+.catalog-search { margin-bottom: var(--space-md); }
+.catalog-search .form-control { height: 44px; }
+
+/* ---------- Filter chip aktif ---------- */
+.active-chips { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-md); }
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 4px; padding: 4px 6px 4px 12px; font-size: 13px; font-weight: 500;
+  background: var(--accent-soft); color: var(--primary); border: 1px solid var(--border); border-radius: var(--radius-full);
+}
+.filter-chip button { border: 0; background: none; color: inherit; cursor: pointer; display: flex; padding: 2px; border-radius: 50%; }
+.filter-chip button:hover { background: rgba(30, 58, 138, .12); }
+.filter-chip .material-symbols-outlined { font-size: 16px; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-sm); }
+.skill-add { display: flex; gap: var(--space-xs); }
+.skill-add .input-icon { flex: 1; min-width: 0; }
+
+/* ---------- Panel filter ---------- */
+.filter-toggle-btn { display: none; position: relative; }
+.filter-badge {
+  min-width: 18px; height: 18px; padding: 0 5px; font-size: 11px; font-weight: 700; line-height: 18px; text-align: center;
+  background: var(--primary); color: #fff; border-radius: var(--radius-full);
+}
+.filter-badge[hidden] { display: none; }
+.view-toggle button { display: inline-flex; align-items: center; }
+.view-toggle .material-symbols-outlined { font-size: 18px; }
+
+/* ---------- Skeleton loading ---------- */
+.skeleton { background: linear-gradient(90deg, var(--bg-muted) 25%, #E7EDF4 37%, var(--bg-muted) 63%); background-size: 400% 100%; animation: katalog-shimmer 1.3s ease infinite; border-radius: var(--radius); }
+.skeleton-logo { width: 44px; height: 44px; flex-shrink: 0; border-radius: var(--radius-lg); }
+.skeleton-line { height: 12px; margin-bottom: 8px; }
+.skeleton-line.tall { height: 20px; }
+.skeleton-btn { width: 96px; height: 32px; }
+.skeleton-card .card-footer { align-items: center; }
+.w-40 { width: 40%; } .w-60 { width: 60%; } .w-70 { width: 70%; } .w-80 { width: 80%; } .w-90 { width: 90%; }
+@keyframes katalog-shimmer { 0% { background-position: 100% 50%; } 100% { background-position: 0 50%; } }
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } }
+
+/* ---------- State kosong / error ---------- */
+.state-block .state-text { max-width: 460px; margin-left: auto; margin-right: auto; }
+.state-block.is-error .icon-wrap { background: var(--danger-bg); color: var(--danger-text); }
+
+/* ---------- Teaser terkunci (publik): nilai disamarkan, bukan data asli ---------- */
+.teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center; }
+.teaser-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: var(--space-md); }
+.teaser-list li { display: flex; gap: 10px; font-size: 15px; }
+.teaser-list .material-symbols-outlined { color: var(--secondary); }
+.section-bordered { border-top: 1px solid var(--border); }
+.footer-desc { max-width: 320px; }
+
+.fav-search { width: 240px; max-width: 100%; }
+.fav-search .form-control, .sort-select { height: 36px; }
+
+/* ---------- Sidebar & topbar mahasiswa ---------- */
+.sidebar-link .count.count-primary { background: var(--primary); }
+.sidebar-link .count[hidden] { display: none; }
+.avatar-link { text-decoration: none; }
+
+/* ---------- Detail lowongan ---------- */
+.exclusive-label {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-size: 12px; font-weight: 600;
+  background: var(--success-bg); color: var(--success-text); border: 1px solid #A7F3D0; border-radius: var(--radius-full);
+}
+.exclusive-label .material-symbols-outlined { font-size: 16px; }
+.detail-head { min-width: 240px; }
+.detail-actions { display: flex; align-items: center; gap: var(--space-sm); flex-wrap: wrap; }
+.fav-toggle.is-active { background: var(--accent); border-color: var(--accent); color: var(--primary); }
+.fav-toggle.is-active .material-symbols-outlined { font-variation-settings: 'FILL' 1; }
+.progress { height: 8px; background: var(--bg-muted); border-radius: 999px; overflow: hidden; }
+.progress span { display: block; height: 100%; background: var(--secondary); border-radius: 999px; }
+.detail-list { padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--text); }
+.score-big { font-size: 48px; line-height: 1; font-weight: 700; color: var(--text); }
+.review-meta { min-width: 220px; }
+.review-item + .review-item { border-top: 1px solid var(--border); padding-top: var(--space-md); margin-top: var(--space-md); }
+.similar-item { display: flex; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px dashed var(--border); color: var(--text); }
+.similar-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.similar-item:first-child { padding-top: 0; }
+.similar-item:hover { text-decoration: none; }
+.similar-item:hover strong { color: var(--secondary); }
+.layout-aside > *, #detailRoot { min-width: 0; }
+#detailRoot .card, #detailRoot .info-row dd, #detailRoot a { overflow-wrap: anywhere; }
+.tabs-pad { padding: 0 var(--space-md); }
+.card-body-tight { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
+.info-row-stack { flex-direction: column; gap: 6px; }
+.alert-compact { font-size: 13px; padding: var(--space-sm) var(--space-md); }
+
+/* ---------- Responsif ---------- */
+@media (max-width: 1024px) {
+  .public-search { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .public-search .input-icon:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .teaser-grid { grid-template-columns: 1fr; }
+  .filter-toggle-btn { display: inline-flex; }
+  .hide-filter-title { display: none; }
+  .filter-panel-card { position: static; }
+  .filter-panel-card .card-body { display: none; }
+  .filter-panel-card.is-open .card-body { display: block; }
+}
+@media (max-width: 640px) {
+  .public-search { grid-template-columns: 1fr; }
+  .catalog-grid.is-list .job-card { flex-direction: column; }
+  .catalog-grid.is-list .job-card .card-footer { flex-direction: row; justify-content: space-between; align-items: center; border-left: 0; border-top: 1px solid var(--border); min-width: 0; }
+  .detail-actions { width: 100%; }
+  .detail-actions .btn { flex: 1 1 auto; justify-content: center; }
+  .view-toggle { display: none; }
+}
